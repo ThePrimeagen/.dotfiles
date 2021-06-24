@@ -1,0 +1,92 @@
+export XDG_CONFIG_HOME=$HOME/.config
+VIM="nvim"
+
+PERSONAL=$XDG_CONFIG_HOME/personal
+for i in `find -L $PERSONAL`; do
+    source $i
+done
+
+export NRDP="$HOME/work/nrdp"
+export CC="clang-10"
+export CXX="clang++-10"
+export PYTHONBREAKPOINT="pudb.set_trace"
+export GOPATH=$HOME/go
+export DARWINS_DIR="$HOME/work/darwins"
+export TVUI="$HOME/work/tvui"
+export TENFOOTIDFILE=`ls ~/.ssh/id_*_tenfootui`
+export API_TOOLS=$HOME/work/tools/edge/scripts
+export GIT_EDITOR=$VIM
+export EOSIO_INSTALL_DIR=$HOME/personal/eos
+export NF_IDFILE=$HOME/.idfile
+export DENO_INSTALL="$HOME/.deno"
+
+# Where should I put you?
+bindkey -s ^f "tmux2\n"
+
+catr() {
+    tail -n "+$1" $3 | head -n "$(($2 - $1 + 1))"
+}
+
+validateYaml() {
+    python -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
+}
+
+goWork() {
+    cp ~/.npm_work_rc ~/.npmrc
+}
+
+goPersonal() {
+    cp ~/.npm_personal_rc ~/.npmrc
+}
+
+addThrottle() {
+    local kbs="kbps"
+    echo $kbs
+    echo "About to throttle to $1 $kbs"
+    echo "sudo tc qdisc add dev wlp59s0 handle 1: root htb default 11"
+    echo "sudo tc class add dev wlp59s0 parent 1: classid 1:1 htb rate $1$kbs"
+    echo "sudo tc class add dev wlp59s0 parent 1:1 classid 1:11 htb rate $1$kbs"
+    sudo tc qdisc add dev wlp59s0 handle 1: root htb default 11
+    sudo tc class add dev wlp59s0 parent 1: classid 1:1 htb rate $1$kbs
+    sudo tc class add dev wlp59s0 parent 1:1 classid 1:11 htb rate $1$kbs
+}
+
+removeThrottle() {
+    sudo tc qdisc del dev wlp59s0 root
+}
+
+dotFilesCommit() {
+    CURRENT=$(pwd)
+    cd ~/dotfiles/awesome-streamerrc
+    git add .
+    git commit -m 'dotFilesCommit'
+    git pull origin master
+    git push origin master
+    cd ..
+    git add .
+    git commit -m 'dotFilesCommit'
+    git push origin master
+    echo "Great Success!!"
+    cd $CURRENT
+}
+
+cat1Line() {
+    cat $1 | tr -d "\n"
+}
+
+ioloop() {
+    FIFO=$(mktemp -u /tmp/ioloop_$$_XXXXXX ) &&
+    trap "rm -f $FIFO" EXIT &&
+    mkfifo $FIFO &&
+    ( : <$FIFO & ) &&    # avoid deadlock on opening pipe
+    exec >$FIFO <$FIFO
+}
+
+eslintify() {
+    cat $1 > /tmp/file_to_eslint
+    npx eslint
+}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+asdf

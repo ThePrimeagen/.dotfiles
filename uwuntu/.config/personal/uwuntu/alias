@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+alias asdf="setxkbmap us real-prog-dvorak"
+alias aoeu="setxkbmap us"
+alias lkj="setxkbmap us real-prog-dvorak"
+alias snth="setxkbmap us"
+alias xsc="xclip -selection clipboard"
+
+# Super cool keyboard stuffs.
+# Required for x applications
+setxkbmap -option caps:ctrl_modifier
+
+startMongo() {
+    sudo systemctl start mongod
+    sudo systemctl enable mongod
+}
+
+increaseWatchers() {
+    sudo sysctl fs.inotify.max_user_watches=65536
+    sudo sysctl -p
+}
+
+change_background() {
+    dconf write /org/mate/desktop/background/picture-filename "'$HOME/dotfiles/backgrounds/$(ls ~/dotfiles/backgrounds | fzf)'"
+}
+
+addToPathFront $DENO_INSTALL
+addToPath /home/theprimeagen/personal/lua-language-server/bin/Linux
+addToPath /usr/local/go/bin
+addToPath $GOPATH/bin
+addToPath $HOME/work/wrapper
+addToPath /usr/local/netflix/tvui-automation-analyzer
+addToPath /usr/local/netflix/encoders/bin/
+addToPath $HOME/.yarn/bin
+addToPath /usr/lib/llvm-8/bin
+addToPath $HOME/personal/uhh/build
+addToPath $HOME/.cargo/bin
+addToPath $HOME/.rustup
+
+# ccache
+addToPathFront /usr/lib/ccache

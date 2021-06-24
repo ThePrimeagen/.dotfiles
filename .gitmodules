@@ -1,0 +1,6 @@
+[submodule "netflix"]
+	path = netflix
+	url = git@github.com:ThePrimeagen/.dotfiles-netflix.git
+[submodule "personal"]
+	path = personal
+	url = git@github.com:ThePrimeagen/.dotfiles-personal.git

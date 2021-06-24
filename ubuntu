@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+stow bin
+stow common
+stow nvim
+stow tmux
+stow uwuntu
+stow netflix
+stow personal
+stow i3
+stow zsh
+stow xkb
