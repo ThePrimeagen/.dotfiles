@@ -1,9 +1,8 @@
-rm -rf $HOME/.config/nvim
-rm -rf $HOME/.config/xkb
-rm -rf $HOME/.config/i3
-rm -rf $HOME/.config/i3status
-rm -rf $HOME/.config/tmux
-rm -rf $HOME/.tmux.conf
-rm -rf $HOME/.vimrc
-rm -rf $HOME/.zshrc
-rm -rf $HOME/.zsh_profile
+#!/usr/bin/env zsh
+# I am using zsh instead of bash.  I was having some troubles using bash with
+# arrays.  Didn't want to investigate, so I just did zsh
+pushd $DOTFILES
+for folder in $FOLDERS; do
+    stow -D $folder
+done
+popd

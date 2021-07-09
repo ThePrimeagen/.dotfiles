@@ -2,13 +2,9 @@
 # I am using zsh instead of bash.  I was having some troubles using bash with
 # arrays.  Didn't want to investigate, so I just did zsh
 pushd $DOTFILES
-
-FOLDERS=("bin" "nvim" "tmux" "uwuntu" "netflix" "personal" "i3" "zsh" "xkb")
-: '
 for folder in $FOLDERS; do
     stow -D $folder
 done
-'
 for folder in $FOLDERS
 do
     echo "stow $folder"

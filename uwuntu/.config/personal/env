@@ -4,6 +4,8 @@
 # Required for x applications
 setxkbmap -option caps:ctrl_modifier
 
+export FOLDERS=("bin" "nvim" "tmux" "uwuntu" "netflix" "personal" "i3" "zsh" "xkb")
+
 startMongo() {
     sudo systemctl start mongod
     sudo systemctl enable mongod
