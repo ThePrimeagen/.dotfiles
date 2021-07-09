@@ -2,12 +2,12 @@
 # I am using zsh instead of bash.  I was having some troubles using bash with
 # arrays.  Didn't want to investigate, so I just did zsh
 pushd $DOTFILES
-for folder in $FOLDERS; do
+for i in $(echo $STOW_FOLDERS | sed "s/,/ /g")
+do
     stow -D $folder
 done
-for folder in $FOLDERS
+for i in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
-    echo "stow $folder"
     stow $folder
 done
 popd

@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Super cool keyboard stuffs.
 # Required for x applications
 setxkbmap -option caps:ctrl_modifier
 
-export FOLDERS=("bin" "nvim" "tmux" "uwuntu" "netflix" "personal" "i3" "zsh" "xkb")
+export STOW_FOLDERS="bin,nvim,tmux,uwuntu,netflix,personal,i3,zsh,xkb"
 
 startMongo() {
     sudo systemctl start mongod
