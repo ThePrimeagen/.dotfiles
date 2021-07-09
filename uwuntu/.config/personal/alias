@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+alias asdf="setxkbmap us real-prog-dvorak"
+alias aoeu="setxkbmap us"
+alias lkj="setxkbmap us real-prog-dvorak"
+alias snth="setxkbmap us"
+alias xsc="xclip -selection clipboard"
+
+#!/usr/bin/env bash
 alias esc="$HOME/.config/sway/config"
 alias vim="$VIM"
 alias vims="NVIM_LISTEN_ADDRESS=/tmp/nvim $VIM"

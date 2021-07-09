@@ -3,6 +3,7 @@ VIM="nvim"
 
 PERSONAL=$XDG_CONFIG_HOME/personal
 for i in `find -L $PERSONAL`; do
+    echo "sourcing $i"
     source $i
 done
 
@@ -53,21 +54,6 @@ addThrottle() {
 
 removeThrottle() {
     sudo tc qdisc del dev wlp59s0 root
-}
-
-dotFilesCommit() {
-    CURRENT=$(pwd)
-    cd ~/dotfiles/awesome-streamerrc
-    git add .
-    git commit -m 'dotFilesCommit'
-    git pull origin master
-    git push origin master
-    cd ..
-    git add .
-    git commit -m 'dotFilesCommit'
-    git push origin master
-    echo "Great Success!!"
-    cd $CURRENT
 }
 
 cat1Line() {

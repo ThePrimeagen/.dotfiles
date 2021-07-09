@@ -1,11 +1,17 @@
-#!/usr/bin/env bash
-stow bin
-stow common
-stow nvim
-stow tmux
-stow uwuntu
-stow netflix
-stow personal
-stow i3
-stow zsh
-stow xkb
+#!/usr/bin/env zsh
+# I am using zsh instead of bash.  I was having some troubles using bash with
+# arrays.  Didn't want to investigate, so I just did zsh
+pushd $DOTFILES
+
+FOLDERS=("bin" "nvim" "tmux" "uwuntu" "netflix" "personal" "i3" "zsh" "xkb")
+: '
+for folder in $FOLDERS; do
+    stow -D $folder
+done
+'
+for folder in $FOLDERS
+do
+    echo "stow $folder"
+    stow $folder
+done
+popd
