@@ -3,7 +3,6 @@ VIM="nvim"
 
 PERSONAL=$XDG_CONFIG_HOME/personal
 for i in `find -L $PERSONAL`; do
-    echo "sourcing $i"
     source $i
 done
 
