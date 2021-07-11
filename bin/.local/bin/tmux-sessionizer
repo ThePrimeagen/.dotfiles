@@ -3,20 +3,26 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    items=`find ~/work -maxdepth 1 -mindepth 1 -type d`
-    items+=`find ~/personal -maxdepth 1 -mindepth 1 -type d`
-    items+=("$HOME/personal")
-    items+=("$HOME/work")
-    items+=("$HOME/.dotfiles")
+    items=`find ~/Code/Flutter -maxdepth 1 -mindepth 1 -type d`
+    items+=`find ~/Code/Goldcoders -maxdepth 1 -mindepth 1 -type d`
+    items+=`find ~/Code/Pitlords -maxdepth 1 -mindepth 1 -type d`
+    items+=`find ~/Code/Laravel -maxdepth 1 -mindepth 1 -type d`
+    items+=`find ~/Code/Hugo -maxdepth 1 -mindepth 1 -type d`
+    items+=`find ~/Code/Netlify -maxdepth 1 -mindepth 1 -type d`
+    items+=`find ~/.config -maxdepth 1 -mindepth 1 -type d`
+    items+=`find ~/Documents -maxdepth 1 -mindepth 1 -type d`
+    items+=`find ~/OneDrive -maxdepth 1 -mindepth 1 -type d`
+    items+=`find ~/GDrive -maxdepth 1 -mindepth 1 -type d`
     selected=`echo "$items" | fzf`
 fi
 
-dirname=`basename $selected`
+dirname="$(basename "$selected")"
 
-tmux switch-client -t $dirname
+
+
+tmux switch-client -t "$dirname"
 if [[ $? -eq 0 ]]; then
     exit 0
 fi
 
-tmux new-session -c $selected -d -s $dirname && tmux switch-client -t $dirname || tmux new -c $selected -A -s $dirname
-
+tmux new-session -c "$selected" -d -s "$dirname" && tmux switch-client -t "$dirname" || tmux new -c "$selected" -A -s "$dirname"
