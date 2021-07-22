@@ -11,12 +11,12 @@ else
     selected=`echo "$items" | fzf`
 fi
 
-dirname=`basename $selected`
+tmux_session_name=`basename $selected | tr . _`
 
-tmux switch-client -t $dirname
+tmux switch-client -t $tmux_session_name
 if [[ $? -eq 0 ]]; then
     exit 0
 fi
 
-tmux new-session -c $selected -d -s $dirname && tmux switch-client -t $dirname || tmux new -c $selected -A -s $dirname
+tmux new-session -c $selected -d -s $tmux_session_name && tmux switch-client -t $tmux_session_name || tmux new -c $selected -A -s $tmux_session_name
 

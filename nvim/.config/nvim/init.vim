@@ -74,12 +74,12 @@ call plug#end()
 let &runtimepath.=',/home/theprimeagen/personal/harpoon/master'
 let &runtimepath.=',/home/theprimeagen/personal/vim-with-me/ui'
 let &runtimepath.=',/home/theprimeagen/personal/git-worktree.nvim/master'
+let &runtimepath.=',/home/theprimeagen/personal/refactoring.nvim'
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
 lua require("theprimeagen")
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
-
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
 
@@ -92,7 +92,7 @@ let mapleader = " "
 
 nnoremap <silent> Q <nop>
 nnoremap <silent> <C-f> :lua require("harpoon.term").sendCommand(1, "tmux-sessionizer\n"); require("harpoon.term").gotoTerminal(1)<CR>
-nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>vwh :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :Ex<CR>
