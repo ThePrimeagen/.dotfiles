@@ -1,4 +1,4 @@
-let g:theprimeagen_colorscheme = "gruvbox"
+let g:theprimeagen_colorscheme = 'gruvbox'
 fun! ColorMyPencils()
     let g:gruvbox_contrast_dark = 'hard'
     if exists('+termguicolors')
@@ -11,8 +11,7 @@ fun! ColorMyPencils()
     if has('nvim')
         call luaeval('vim.cmd("colorscheme " .. _A[1])', [g:theprimeagen_colorscheme])
     else
-        " TODO: What the way to use g:theprimeagen_colorscheme
-        colorscheme gruvbox
+        exe 'colorscheme' g:theprimeagen_colorscheme
     endif
 
     highlight ColorColumn ctermbg=0 guibg=grey
