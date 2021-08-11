@@ -3,4 +3,8 @@ if [[ -z $STOW_FOLDERS ]]; then
     STOW_FOLDERS="bin,i3,netflix,nvim,personal,tmux,uwuntu,xkb,zsh"
 fi
 
-$HOME/.dotfiles/install
+if [[ -z $DOTFILES ]]; then
+    DOTFILES=$HOME/.dotfiles
+fi
+
+STOW_FOLDERS=$STOW_FOLDERS DOTFILES=$DOTFILES $DOTFILES/install
