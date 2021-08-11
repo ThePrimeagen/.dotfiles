@@ -8,6 +8,7 @@ else
     items+=("$HOME/personal")
     items+=("$HOME/work")
     items+=("$HOME/.dotfiles")
+    items+=("$HOME/ansible")
     selected=`echo "$items" | fzf`
 fi
 

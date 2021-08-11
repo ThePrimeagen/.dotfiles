@@ -106,12 +106,15 @@ nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 nnoremap <leader>gt <Plug>PlenaryTestFile
 nnoremap <leader>vwm :lua require("vim-with-me").init()<CR>
 nnoremap <leader>dwm :lua require("vim-with-me").disconnect()<CR>
+nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<CR>
+nnoremap <leader>gln :cnext<CR>:call search(_search_term)<CR>
+nnoremap <leader>glp :cprev<CR>:call search(_search_term)<CR>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " greatest remap ever
-vnoremap <leader>p "_dP
+xnoremap <leader>p "_dP
 
 " next greatest remap ever : asbjornHaland
 nnoremap <leader>y "+y

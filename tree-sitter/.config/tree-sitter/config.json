@@ -1,0 +1,53 @@
+{
+  "parser-directories": [
+    "/home/theprimeagen/.config/tree-sitter/tree-sitter-lua"
+  ],
+  "theme": {
+    "tag": 18,
+    "function": 26,
+    "string.special": 30,
+    "punctuation.bracket": 239,
+    "punctuation.delimiter": 239,
+    "embedded": null,
+    "function.builtin": {
+      "color": 26,
+      "bold": true
+    },
+    "constant.builtin": {
+      "color": 94,
+      "bold": true
+    },
+    "constant": 94,
+    "operator": {
+      "bold": true,
+      "color": 239
+    },
+    "string": 28,
+    "variable.builtin": {
+      "bold": true
+    },
+    "variable.parameter": {
+      "underline": true
+    },
+    "type": 23,
+    "keyword": 56,
+    "number": {
+      "bold": true,
+      "color": 94
+    },
+    "constructor": 136,
+    "property": 124,
+    "type.builtin": {
+      "bold": true,
+      "color": 23
+    },
+    "comment": {
+      "color": 245,
+      "italic": true
+    },
+    "attribute": {
+      "color": 124,
+      "italic": true
+    }
+  }
+}
