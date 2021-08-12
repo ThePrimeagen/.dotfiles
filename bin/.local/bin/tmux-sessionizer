@@ -1,7 +1,46 @@
 #!/usr/bin/env bash
 
-if [[ $# -eq 1 ]]; then
+TMUX_HISTORY_LENGTH=10
+TMUX_HISTORY_FILE=$HOME/.tmux-sessionizer
+
+add_new_line() {
+    tail -n1 $1 | read -r _ || echo >> $1
+}
+
+update_history() {
+    # TODO: Probably change this to .config once i have the proper version of tmux
+    if [[ ! -e "$TMUX_HISTORY_FILE"  ]]; then
+        touch $TMUX_HISTORY_FILE
+    fi
+    tmux_contents=`cat $TMUX_HISTORY_FILE`
+    printf "$1\n$tmux_contents" > $TMUX_HISTORY_FILE
+    sed -ni "1,${TMUX_HISTORY_LENGTH}p" $TMUX_HISTORY_FILE
+    add_new_line $TMUX_HISTORY_FILE
+}
+
+clear_history() {
+    rm $TMUX_HISTORY_FILE
+    touch $TMUX_HISTORY_FILE
+}
+
+if [[ "$1" = "clear" ]]; then
+    clear_history
+    exit 0
+elif [[ "$1" = "-v" ]]; then
+    cat $TMUX_HISTORY_FILE
+    exit 0
+elif [[ $# -eq 1 ]]; then
     selected=$1
+elif [[ $# -eq 2 && "$1" = "restore" ]]; then
+    history_length=`cat $TMUX_HISTORY_FILE | wc -l`
+    if [[ $2 -gt $history_length ]]; then
+        echo "Requested $2 item, but there is only $history_length available."
+        exit 1
+    elif [[ $2 -ge $TMUX_HISTORY_LENGTH ]]; then
+        echo "cannot provide a length greater than $TMUX_HISTORY_LENGTH"
+        exit 1
+    fi
+    selected=`cat $TMUX_HISTORY_FILE | sed -n "$2,${2}p"`
 else
     items=`find ~/work -maxdepth 1 -mindepth 1 -type d`
     items+=`find ~/personal -maxdepth 1 -mindepth 1 -type d`
@@ -12,7 +51,12 @@ else
     selected=`echo "$items" | fzf`
 fi
 
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
 tmux_session_name=`basename $selected | tr . _`
+update_history $selected
 
 tmux switch-client -t $tmux_session_name
 if [[ $? -eq 0 ]]; then
@@ -20,4 +64,3 @@ if [[ $? -eq 0 ]]; then
 fi
 
 tmux new-session -c $selected -d -s $tmux_session_name && tmux switch-client -t $tmux_session_name || tmux new -c $selected -A -s $tmux_session_name
-
