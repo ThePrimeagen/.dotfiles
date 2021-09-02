@@ -34,6 +34,10 @@ Plug 'nvim-treesitter/playground'
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 
+" Snippets
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
+
 " THANKS BFREDL
 Plug '/home/mpaulson/personal/contextprint.nvim'
 
@@ -54,6 +58,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+Plug 'vim-conf-live/vimconflive2021-colorscheme'
 Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 
@@ -74,12 +79,12 @@ call plug#end()
 let &runtimepath.=',/home/theprimeagen/personal/harpoon/master'
 let &runtimepath.=',/home/theprimeagen/personal/vim-with-me/ui'
 let &runtimepath.=',/home/theprimeagen/personal/git-worktree.nvim/master'
-let &runtimepath.=',/home/theprimeagen/personal/refactoring.nvim'
+let &runtimepath.=',/home/theprimeagen/personal/refactoring.nvim/name_text'
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
 lua require("theprimeagen")
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
+lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
 
@@ -89,6 +94,15 @@ endif
 
 let loaded_matchparen = 1
 let mapleader = " "
+
+imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
+
+snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
+snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+
+imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
+smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
 
 nnoremap <silent> Q <nop>
 nnoremap <silent> <C-f> :lua require("harpoon.term").sendCommand(1, "tmux-sessionizer\n"); require("harpoon.term").gotoTerminal(1)<CR>

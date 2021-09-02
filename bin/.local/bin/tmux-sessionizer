@@ -44,10 +44,7 @@ elif [[ $# -eq 2 && "$1" = "restore" ]]; then
 else
     items=`find ~/work -maxdepth 1 -mindepth 1 -type d`
     items+=`find ~/personal -maxdepth 1 -mindepth 1 -type d`
-    items+=("$HOME/personal")
-    items+=("$HOME/work")
-    items+=("$HOME/.dotfiles")
-    items+=("$HOME/ansible")
+    items+=`find ~ -maxdepth 1 -mindepth 1 -type d`
     selected=`echo "$items" | fzf`
 fi
 

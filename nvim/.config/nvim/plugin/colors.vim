@@ -29,5 +29,5 @@ endfun
 call ColorMyPencils()
 
 " Vim with me
-nnoremap <leader>cwm :call ColorMyPencils()<CR>
+nnoremap <leader>cmp :call ColorMyPencils()<CR>
 nnoremap <leader>vwb :let g:theprimeagen_colorscheme =

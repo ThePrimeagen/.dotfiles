@@ -5,6 +5,8 @@ PERSONAL=$XDG_CONFIG_HOME/personal
 for i in `find -L $PERSONAL`; do
     source $i
 done
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 
 export NRDP="$HOME/work/nrdp"
 export CC="clang-10"
@@ -71,7 +73,5 @@ eslintify() {
     cat $1 > /tmp/file_to_eslint
     npx eslint
 }
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 asdf
