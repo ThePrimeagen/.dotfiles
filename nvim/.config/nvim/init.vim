@@ -38,9 +38,6 @@ Plug 'szw/vim-maximizer'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 
-" THANKS BFREDL
-Plug '/home/mpaulson/personal/contextprint.nvim'
-
 Plug 'rust-lang/rust.vim'
 Plug 'darrikonn/vim-gofmt'
 Plug 'tpope/vim-fugitive'
@@ -63,7 +60,6 @@ Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 
 " HARPOON!!
-Plug '/home/mpaulson/personal/rfc-reader'
 Plug 'mhinz/vim-rfc'
 
 " prettier
@@ -76,10 +72,10 @@ Plug 'sbdchd/neoformat'
 call plug#end()
 
 " Adding local modules
-let &runtimepath.=',/home/theprimeagen/personal/harpoon/master'
-let &runtimepath.=',/home/theprimeagen/personal/vim-with-me/ui'
-let &runtimepath.=',/home/theprimeagen/personal/git-worktree.nvim/master'
-let &runtimepath.=',/home/theprimeagen/personal/refactoring.nvim/name_text'
+let &runtimepath.=',' . expand("$HOME") . '/personal/harpoon/master'
+let &runtimepath.=',' . expand("$HOME") . '/personal/vim-with-me/ui'
+let &runtimepath.=',' . expand("$HOME") . '/personal/git-worktree.nvim/master'
+let &runtimepath.=',' . expand("$HOME") . '/personal/refactoring.nvim/get-locals'
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
