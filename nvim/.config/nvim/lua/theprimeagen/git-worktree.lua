@@ -1,47 +1,29 @@
 local Worktree = require("git-worktree")
-local Job = require("plenary.job")
-local Path = require("plenary.path")
 
-local function is_nrdp()
-    return not not (string.find(vim.loop.cwd(), vim.env.NRDP, 1, true))
+local function is_nrdp(path)
+    local found = path:find(vim.env["NRDP"])
+    return type(found) == "number" and found > 0
 end
 
-local function is_tvui()
-    return not not (string.find(vim.loop.cwd(), vim.env.TVUI, 1, true))
+local function is_tvui(path)
+    local found = path:find(vim.env["TVUI"])
+    return type(found) == "number" and found > 0
 end
 
-local function get_nrdp_build_paths(path)
-    return
-        Path:new({vim.env.NRDP, path, "configure"}):absolute(),
-        Path:new({vim.env.NRDP, "build", path}):absolute()
-end
-
-Worktree.on_tree_change(function(op, path, upstream)
-
-    if op == Worktree.Operations.Switch and is_tvui() then
-        Job:new({
-            "./tvui", "install"
-        }):start()
+local M = {}
+function M.execute(path, just_build)
+    if is_nrdp(path) then
+        local command = string.format(":silent !tmux-nrdp tmux %s %s", path, just_build)
+        vim.cmd(command)
+    elseif is_tvui(path) then
+        print("EXECUTE ", path)
+        local command = string.format(":!tmux-tvui %s", path)
+        vim.cmd(command)
     end
+end
 
-    if op == Worktree.Operations.Create and is_nrdp() then
-        local submodule = Job:new({
-            "git", "submodule", "update"
-        })
-
-        local configure_path, build_path = get_nrdp_build_paths(path)
-        local make_build = Job:new({
-            "mkdir", "-p", build_path
-        })
-
-        local configure = Job:new({
-            configure_path, "--ninja", "--debug",
-            cwd = build_path,
-        })
-
-        submodule:and_then_on_success(make_build)
-        make_build:and_then_on_success(configure)
-        submodule:start()
-    end
+Worktree.on_tree_change(function(_ --[[op]], path, _ --[[upstream]])
+    M.execute(path.path)
 end)
 
+return M

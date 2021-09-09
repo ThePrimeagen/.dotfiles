@@ -2,6 +2,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 VIM="nvim"
 
 PERSONAL=$XDG_CONFIG_HOME/personal
+source $PERSONAL/env
 for i in `find -L $PERSONAL`; do
     source $i
 done
@@ -9,18 +10,24 @@ source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
 export NRDP="$HOME/work/nrdp"
-export CC="clang-10"
-export CXX="clang++-10"
+export NRDP_BUILDS="$HOME/work/builds"
+export CC="clang-12"
+export CXX="clang++-12"
 export PYTHONBREAKPOINT="pudb.set_trace"
 export GOPATH=$HOME/go
 export DARWINS_DIR="$HOME/work/darwins"
 export TVUI="$HOME/work/tvui"
-export TENFOOTIDFILE=`ls ~/.ssh/id_*_tenfootui`
 export API_TOOLS=$HOME/work/tools/edge/scripts
 export GIT_EDITOR=$VIM
 export EOSIO_INSTALL_DIR=$HOME/personal/eos
 export NF_IDFILE=$HOME/.idfile
 export DENO_INSTALL="$HOME/.deno"
+export N_PREFIX="$HOME/.local/n"
+export DOTFILES=$HOME/.dotfiles
+
+addToPathFront $HOME/.local/.npm-global/bin
+addToPathFront $HOME/.local/n/bin/
+addToPathFront $HOME/.local/go/bin
 
 # Where should I put you?
 bindkey -s ^f "tmux-sessionizer\n"
@@ -73,5 +80,3 @@ eslintify() {
     cat $1 > /tmp/file_to_eslint
     npx eslint
 }
-
-asdf

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+addToPathFront /home/theprimeagen/n/bin
 addToPathFront $DENO_INSTALL
 addToPath /home/theprimeagen/personal/lua-language-server/bin/Linux
 addToPath /usr/local/go/bin

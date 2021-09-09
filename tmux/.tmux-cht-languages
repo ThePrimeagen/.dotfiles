@@ -1,7 +1,10 @@
 golang
+solidity
 nodejs
 javascript
+tmux
 typescript
+zsh
 cpp
 c
 lua
@@ -13,3 +16,4 @@ haskell
 ArnoldC
 css
 html
+gdb

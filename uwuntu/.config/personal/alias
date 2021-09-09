@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-alias asdf="setxkbmap us real-prog-dvorak"
+alias asdf="setxkbmap real-prog-dvorak"
 alias aoeu="setxkbmap us"
-alias lkj="setxkbmap us real-prog-dvorak"
+alias lkj="setxkbmap real-prog-dvorak"
 alias snth="setxkbmap us"
 alias xsc="xclip -selection clipboard"
 
@@ -19,6 +19,7 @@ alias etc="$VIM $DOTFILES/awesome-streamerrc/ThePrimeagen/.tmux.conf"
 alias bp="dotFileInstall && source ~/.zshrc"
 alias evrc="$VIM $DOTFILES/awesome-streamerrc/ThePrimeagen/.vimrc"
 alias enrc="nvim $DOTFILES/awesome-streamerrc/ThePrimeagen/init.vim --cmd \"cd $DOTFILES/awesome-streamerrc/ThePrimeagen/init.vim\""
+alias yolo="git push origin master --force --no-verify"
 alias eirc="nvim $XDG_CONFIG_HOME/i3/i3config"
 alias cvrc="cat $DOTFILES/vimrc/.vimrc"
 alias dotFileInstall="$DOTFILES/install"
