@@ -73,5 +73,3 @@ eslintify() {
     cat $1 > /tmp/file_to_eslint
     npx eslint
 }
-
-asdf
