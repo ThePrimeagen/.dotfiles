@@ -34,3 +34,4 @@ docker-compose
 stow
 chmod
 chown
+make

@@ -9,8 +9,8 @@ source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
 export NRDP="$HOME/work/nrdp"
-export CC="clang-10"
-export CXX="clang++-10"
+export CC="clang-12"
+export CXX="clang++-12"
 export PYTHONBREAKPOINT="pudb.set_trace"
 export GOPATH=$HOME/go
 export DARWINS_DIR="$HOME/work/darwins"

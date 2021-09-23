@@ -10,6 +10,7 @@ require'lspconfig'.tsserver.setup{ on_attach=on_attach }
 
 require'lspconfig'.clangd.setup {
     on_attach = on_attach,
+    cmd = { "clangd", "--background-index", "--clang-tidy" },
     root_dir = function() return vim.loop.cwd() end
 }
 

@@ -38,15 +38,7 @@ local function get_file_name()
         return "(no name)"
     end
 
-    local name_parts = split(name, path.sep)
-    local name_results = {}
-    for idx = 1, #name_parts - 1 do
-        table.insert(name_results, name_parts[idx]:sub(1, 1))
-        table.insert(name_results, path.sep)
-    end
-    table.insert(name_results, name_parts[#name_parts])
-    last_name_results = table.concat(name_results)
-    return last_name_results
+    return name
 end
 
 local function get_git_info(force)

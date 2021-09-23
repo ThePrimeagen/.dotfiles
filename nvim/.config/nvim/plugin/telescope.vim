@@ -15,3 +15,4 @@ nnoremap <leader>vc :lua require('theprimeagen.telescope').chat_selector()<CR>
 nnoremap <leader>gc :lua require('theprimeagen.telescope').git_branches()<CR>
 nnoremap <leader>gw :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
 nnoremap <leader>gm :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
+nnoremap <leader>td :lua require('theprimeagen.telescope').dev()<CR>
