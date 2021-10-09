@@ -1,9 +1,20 @@
 local Worktree = require("git-worktree")
 
-Worktree.on_tree_change(function(op, path, upstream)
-    print("HELLO", op, path, upstream)
-    if op == Worktree.Operations.Switch then
-    elseif op == Worktree.Operations.Create then
+local function is_nrdp(path)
+    local found = path:find(vim.env["NRDP"])
+    return type(found) == "number" and found > 0
+end
+
+local M = {}
+function M.execute(path, just_build)
+    if is_nrdp(path) then
+        local command = string.format(":silent !tmux-nrdp tmux %s %s", path, just_build)
+        vim.cmd(command)
     end
+end
+
+Worktree.on_tree_change(function(_ --[[op]], path, _ --[[upstream]])
+    M.execute(path.path)
 end)
 
+return M

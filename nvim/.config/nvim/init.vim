@@ -50,6 +50,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'theprimeagen/vim-be-good'
 Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-projectionist'
+Plug 'tomlion/vim-solidity'
 
 " telescope requirements...
 Plug 'nvim-lua/popup.nvim'
@@ -104,6 +105,9 @@ smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' 
 
 nnoremap <silent> Q <nop>
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
+" Probably rename this, because its straight silly to be a worktree.
+nnoremap <leader>; :lua require("theprimeagen.git-worktree").execute(vim.loop.cwd(), "just-build")<CR>
+
 nnoremap <leader>vwh :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
@@ -173,7 +177,7 @@ augroup END
 
 augroup THE_PRIMEAGEN
     autocmd!
-    autocmd BufWritePre lua Neoformat
+    autocmd BufWritePre lua,cpp,c,h,hpp,cxx,cc Neoformat
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
 augroup END

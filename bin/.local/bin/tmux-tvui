@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+tvui_commands() {
+
+    branch_name=$(basename $1)
+    tvui="$TVUI/$branch_name"
+
+    pushd $tvui
+
+    # configure the damn script
+    case "$2" in
+        "install")
+            ./tvui install
+            ;;
+        "build")
+            ./tvui client
+            ;;
+    esac
+
+    popd
+}
+
+case "$1" in
+    "tmux")
+
+        session_name=$(tmux display-message -p '#S');
+        clean_arg=$(basename $2 | tr '/.' '__')
+        target="$session_name:$clean_arg"
+
+        if ! tmux has-session -t $target; then
+            tmux neww -dn $clean_arg
+        fi
+        tmux send-keys -t $target "tmux-tvui $2 $3"
+        ;;
+    *)
+        tvui_commands $1 $2
+        ;;
+esac
+
+

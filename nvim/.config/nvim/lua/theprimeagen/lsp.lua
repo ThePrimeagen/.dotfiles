@@ -20,6 +20,8 @@ require'lspconfig'.jedi_language_server.setup{
 
 require'lspconfig'.svelte.setup{}
 
+require'lspconfig'.solang.setup{ }
+
 require'lspconfig'.yamlls.setup{}
 
 require'lspconfig'.gopls.setup{
