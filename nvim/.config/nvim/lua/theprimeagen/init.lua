@@ -1,5 +1,6 @@
 require("theprimeagen.telescope")
 require("theprimeagen.git-worktree")
+require("theprimeagen.debugger")
 require("theprimeagen.harpoon")
 require("theprimeagen.lsp")
 

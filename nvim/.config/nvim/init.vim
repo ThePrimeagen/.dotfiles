@@ -20,7 +20,11 @@ Plug 'ambv/black'
 
 " Plebvim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'mattn/emmet-vim'
+
 " Plug 'nvim-lua/completion-nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'simrat39/symbols-outline.nvim'
@@ -32,7 +36,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
 " Debugger Plugins
-Plug 'puremourning/vimspector'
+Plug 'mfussenegger/nvim-dap'
+Plug 'Pocco81/DAPInstall.nvim'
 Plug 'szw/vim-maximizer'
 
 " Snippets
@@ -78,7 +83,7 @@ call plug#end()
 let &runtimepath.=',' . expand("$HOME") . '/personal/harpoon/master'
 let &runtimepath.=',' . expand("$HOME") . '/personal/vim-with-me/ui'
 let &runtimepath.=',' . expand("$HOME") . '/personal/git-worktree.nvim/master'
-let &runtimepath.=',' . expand("$HOME") . '/personal/refactoring.nvim/language-feta'
+let &runtimepath.=',' . expand("$HOME") . '/personal/refactoring.nvim/language-feta-2'
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
@@ -86,6 +91,11 @@ lua require("theprimeagen")
 lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
+let g:user_emmet_settings = {
+  \  'svelte' : {
+  \    'extends' : 'html',
+  \  },
+  \}
 
 if executable('rg')
     let g:rg_derive_root='true'
