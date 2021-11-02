@@ -24,6 +24,9 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'mattn/emmet-vim'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'onsails/lspkind-nvim'
 
 " Plug 'nvim-lua/completion-nvim'
 Plug 'glepnir/lspsaga.nvim'
@@ -83,7 +86,7 @@ call plug#end()
 let &runtimepath.=',' . expand("$HOME") . '/personal/harpoon/master'
 let &runtimepath.=',' . expand("$HOME") . '/personal/vim-with-me/ui'
 let &runtimepath.=',' . expand("$HOME") . '/personal/git-worktree.nvim/master'
-let &runtimepath.=',' . expand("$HOME") . '/personal/refactoring.nvim/language-feta-2'
+let &runtimepath.=',' . expand("$HOME") . '/personal/refactoring.nvim/get_value'
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
@@ -93,6 +96,18 @@ let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
 let g:user_emmet_settings = {
   \  'svelte' : {
+  \    'extends' : 'html',
+  \  },
+  \  'javascript.jsx' : {
+  \    'extends' : 'jsx',
+  \  },
+  \  'javascript' : {
+  \    'extends' : 'jsx',
+  \  },
+  \  'js' : {
+  \    'extends' : 'jsx',
+  \  },
+  \  'jsx' : {
   \    'extends' : 'html',
   \  },
   \}
