@@ -22,6 +22,11 @@ export GIT_EDITOR=$VIM
 export EOSIO_INSTALL_DIR=$HOME/personal/eos
 export NF_IDFILE=$HOME/.idfile
 export DENO_INSTALL="$HOME/.deno"
+export N_PREFIX="$HOME/.local/n"
+export DOTFILES=$HOME/.dotfiles
+
+addToPathFront $HOME/.local/.npm-global/bin
+addToPathFront $HOME/.local/n/bin/
 
 # Where should I put you?
 bindkey -s ^f "tmux-sessionizer\n"
