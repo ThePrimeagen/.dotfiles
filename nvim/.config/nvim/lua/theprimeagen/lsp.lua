@@ -108,18 +108,6 @@ local function config(_config)
 	}, _config or {})
 end
 
-require("null-ls").config({
-    filetypes = { "typescript" },
-    debug = true,
-    sources = {
-        require("null-ls").builtins.diagnostics.eslint
-    }
-})
-
-require("lspconfig")["null-ls"].setup(config({}))
-
-require("lspconfig").ls_emmet.setup(config())
-
 require("lspconfig").tsserver.setup(config())
 
 require("lspconfig").clangd.setup(config({
