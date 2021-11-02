@@ -2,6 +2,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 VIM="nvim"
 
 PERSONAL=$XDG_CONFIG_HOME/personal
+source $PERSONAL/env
 for i in `find -L $PERSONAL`; do
     source $i
 done
@@ -16,7 +17,6 @@ export PYTHONBREAKPOINT="pudb.set_trace"
 export GOPATH=$HOME/go
 export DARWINS_DIR="$HOME/work/darwins"
 export TVUI="$HOME/work/tvui"
-export TENFOOTIDFILE=`ls ~/.ssh/id_*_tenfootui`
 export API_TOOLS=$HOME/work/tools/edge/scripts
 export GIT_EDITOR=$VIM
 export EOSIO_INSTALL_DIR=$HOME/personal/eos
