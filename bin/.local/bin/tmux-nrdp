@@ -15,13 +15,13 @@ nrdp_commands() {
         git submodule update
         popd
 
-        $nrdp/configure --ninja --release
+        $nrdp/configure $(projector --pwd $nrdp configure)
         rm $nrdp/compile_commands.json
         cp compile_commands.json $nrdp
     fi
 
     # build netflix
-    ninja -j 20
+    $(projector build)
 
     if [ "$2" != "just-build" ]; then
         notify-send --icon=gtk-info "NRDP Build $branch_name" "has completed"

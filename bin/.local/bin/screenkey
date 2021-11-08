@@ -2,7 +2,7 @@
 
 while [ : ]; do
     pkill screenkey
-    /usr/local/bin/screenkey -s large --scr 1 -p bottom --geometry 1210x300+712+810 --timeout 1.5 &
+    /usr/bin/screenkey -s large --scr 1 -p bottom --geometry 1210x300+712+810 --timeout 1.5 &
     sleep 15
     echo "Restarting"
 done

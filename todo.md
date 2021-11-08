@@ -1,3 +1,32 @@
+### Fast Property creation (fastproperty) fastproperty FastProperty
+* How fastproperties works for tvui boot.
+  - for nq#staging: nq_tvui_uiboot_member app name
+  - for tvui#prod: api app name
+  - There is a pipeline to make this easy at: https://www.spinnaker.mgmt.netflix.net/#/applications/tvui/executions?pipeline=Deploy%20Fast%20Property%20Regionally
+    - pick deploy fast property regionally
+
+### TOMORROW
+* MERGE THE DANG PR ALREADY
+* check in with teddy on refactoring
+* merge any prs with harpoon
+
+### Day 2, 3 Netflix
+Wow.  I uhh... well it turns out that my user name, being ThePrimeagen, caused
+some internal tools to make it so that I could not launch the internal linux
+application that mimics real world tvs.
+
+Took me about 4 hours before we came to that conclusion.  It hurt.  I am hurt.
+
+#### Then it was onto fires
+I did nothing that I wanted to.. :(  BUT TOMORROW!!!  Its going to be awesome.
+
+#### TVUI continues to hurt my feelings, Day 3
+Again.  All I want to do is do some work, instead I am currently spending my
+time trying to figure out why a server, thats wrapped in several layers doesn't
+work for me...
+
+This is categorically always the worst form of work.
+
 ### Day 1 Netflix
 * I got to use my new thread ripper!  It was so awesome...
 * But unfortunately I just got hosed on some permissions + remembering all the
@@ -76,12 +105,6 @@ boss.
   collection)
 * Synchronization of graphs and execution : https://youtu.be/-UY424SHxIU?t=429
 * Message view to zone view was incredible.
-
-### TOMORROW
-* Meeting with monument health
-* check in with teddy on refactoring
-* merge any prs with harpoon
-* tabnine getting started
 
 ### TabNine
 * So at first it seemed not to work.  I was a bit confused....

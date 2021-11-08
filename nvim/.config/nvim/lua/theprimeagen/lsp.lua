@@ -1,21 +1,10 @@
 local sumneko_root_path = "/home/theprimeagen/personal/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
 
-local configs = require("lspconfig/configs")
+vim.lsp.set_log_level("debug")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-configs.ls_emmet = {
-	default_config = {
-		cmd = { "ls_emmet", "--stdio" },
-		filetypes = { "html", "css", "scss" }, -- Add the languages you use, see language support
-		root_dir = function()
-			return vim.loop.cwd()
-		end,
-		settings = {},
-	},
-}
 
 -- Setup nvim-cmp.
 local cmp = require("cmp")
@@ -94,14 +83,6 @@ tabnine:setup({
 	snippet_placeholder = '..',
 })
 
---[[
--- Setup lspconfig.
-require('lspconfig')[%YOUR_LSP_SERVER%].setup {
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-}-- Setup nvim-cmp.
-]]
--- local cmp = require'cmp'
-
 local function config(_config)
 	return vim.tbl_deep_extend("force", {
 		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
@@ -110,12 +91,16 @@ end
 
 require("lspconfig").tsserver.setup(config())
 
+--[[  I cannot seem to get this woring on new computer..
 require("lspconfig").clangd.setup(config({
-	cmd = { "clangd", "--background-index", "--clang-tidy" },
-	root_dir = function()
+	cmd = { "clangd", "--background-index", "--log=verbose" },
+    root_dir = function()
+        print("clangd-Rootdir", vim.loop.cwd())
 		return vim.loop.cwd()
 	end,
 }))
+--]]
+require("lspconfig").ccls.setup(config())
 
 require("lspconfig").jedi_language_server.setup(config())
 
