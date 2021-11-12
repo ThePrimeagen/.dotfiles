@@ -1,3 +1,29 @@
+## Charity stream recap
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Fast Property creation (fastproperty) fastproperty FastProperty
 * How fastproperties works for tvui boot.
   - for nq#staging: nq_tvui_uiboot_member app name
@@ -529,4 +555,29 @@ go/ftl-access-logs
   allocate a new set, and just rerun you may not get the actual new set of
   users.
 
+## TabNine
+it is interesting how much of the time the suggestions are not complete code
+examples, but actual useful completion.
+
+### Great example of good auto completion
+* Image: Selection_009.png
+
+## PVM Stuffs
+### Steps to complete to understand pvm in its entirety.
+* Run custom javascript hosted on dta
+  * get custom token from: https://auth.dta.netflix.net/login
+* Run custom build of nrdp
+* http://nrdp.corp.netflix.com/userguides/master/guides/tools/pvmdevices/
+* Your own builds: http://nrdp.corp.netflix.com/userguides/master/guides/build/compiling/#pvm-managed-workflow
+
+### DTA
+Insertion: https://file.dta.netflix.net/apidoc/#api-Path-InsertFile
+
+### Things I know
+* Launch pvm with prebuild.
+* Run with telemetry
+* Get telemetry off box
+
+## Realtime javascript measurement
+* From Sam: -A '*Class.*' --inst-print
 
