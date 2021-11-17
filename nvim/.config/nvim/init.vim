@@ -25,6 +25,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'onsails/lspkind-nvim'
+Plug 'github/copilot.vim'
 
 " Plug 'nvim-lua/completion-nvim'
 Plug 'glepnir/lspsaga.nvim'
@@ -84,7 +85,7 @@ call plug#end()
 let &runtimepath.=',' . expand("$HOME") . '/personal/harpoon/master'
 let &runtimepath.=',' . expand("$HOME") . '/personal/vim-with-me/ui'
 let &runtimepath.=',' . expand("$HOME") . '/personal/git-worktree.nvim/master'
-let &runtimepath.=',' . expand("$HOME") . '/personal/refactoring.nvim/debug-me-daddy-again'
+let &runtimepath.=',' . expand("$HOME") . '/personal/refactoring.nvim/printfyou'
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 

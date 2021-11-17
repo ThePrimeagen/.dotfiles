@@ -1,4 +1,7 @@
-## Charity stream recap
+## Config
+* Pass around the config object
+* custom serialization methods for printfme
+
 
 
 
@@ -581,3 +584,7 @@ Insertion: https://file.dta.netflix.net/apidoc/#api-Path-InsertFile
 ## Realtime javascript measurement
 * From Sam: -A '*Class.*' --inst-print
 
+## ETH things to learn
+* Library ethlint for auto formatting.
+* inheritance.  The complications of override vs virtual
+* testing.  Mocking and avoiding.
