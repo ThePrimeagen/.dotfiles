@@ -13,8 +13,15 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+if [ ! $tmux_running ]; then
     tmux new-session -s $selected_name -c $selected
+    exit 0
+fi
+
+# If there is at least a tmux server running
+# And if you're not inside tmux, then either attach to the session or create it:
+if [ -z "$TMUX" ]; then
+    tmux new-session -A -s $selected_name -c $selected 
     exit 0
 fi
 
