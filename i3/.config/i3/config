@@ -41,7 +41,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-# bindsym $mod+space exec "/home/theprimeagen/dotfiles/awesome-streamerrc/ThePrimeagen/tmux2"
+# bindsym $mod+space exec "/home/chrisclarkson/dotfiles/awesome-streamerrc/clarksoncj/tmux2"
 
 bindsym $mod+Shift+q kill
 

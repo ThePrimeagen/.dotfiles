@@ -1,5 +1,5 @@
-local sumneko_root_path = "/home/theprimeagen/personal/lua-language-server"
-local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
+local sumneko_root_path = "/home/chrisclarkson/personal/lua-language-server"
+local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -192,3 +192,15 @@ require("luasnip.loaders.from_vscode").lazy_load({
 	include = nil, -- Load all languages
 	exclude = {},
 })
+
+require('lspconfig').solargraph.setup{}
+require'lspconfig'.terraform_lsp.setup{}
+require('lspconfig').yamlls.setup {
+	settings = {
+	  yaml = {
+		schemas = {
+		  ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.k8s.yaml",
+		},
+	  },
+	}
+  }

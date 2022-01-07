@@ -1,6 +1,6 @@
 {
   "parser-directories": [
-    "/home/theprimeagen/.config/tree-sitter/tree-sitter-lua"
+    "/home/chrisclarkson/.config/tree-sitter/tree-sitter-lua"
   ],
   "theme": {
     "tag": 18,
