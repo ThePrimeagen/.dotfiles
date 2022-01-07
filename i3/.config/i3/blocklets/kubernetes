@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+KCONTEXT=$(kubectl config current-context 2>/dev/null)
+NONE="None"
+if [[ $?=="0" ]]; then
+    CC=$(kubectl config view -ojsonpath='{..current-context}')
+    KNAMESPACE=$(kubectl config view -ojsonpath="{.Contexts[?(@.Name==\"$CC\")]..namespace}")
+    echo "☸ ${CC}/${KNAMESPACE:-None} ☸"
+fi
+

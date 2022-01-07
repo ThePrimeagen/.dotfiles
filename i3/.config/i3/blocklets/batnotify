@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Battery notifier script for i3
+# First warning is at 30%,  Critical warning less than 15%
+
+discharge_mode=`acpi -a | grep -o off`
+
+# Get current battery level and set threshold
+battery_level=$(cat /sys/class/power_supply/BAT0/capacity)
+critical_value=15
+warning_value=30
+
+# Messages to print to notification
+message="*** Battery level is ${battery_level}%, critical, sleeping in 30 seconds time ***"
+warn_message="*** Battery level is ${battery_level}%, warning, connect your charger ***"
+
+# Notification icon to use
+not_icon="/usr/share/icons/gnome/scalable/status/battery-low-symbolic.svg"
+
+if [ "$discharge_mode" == "off" ]; then
+  if [  "$battery_level" -le "$critical_value" ]; then
+    if [ -f "$not_icon" ]; then
+        notify-send -u critical -i "$not_icon" -t 60000 "$message"
+       # i3-nagbar -m "$message"
+        sleep 300
+        sudo  /lib/systemd/systemd-sleep hybrid-sleep
+    else
+         notify-send -u critical  -t 60000 "$message"
+        #i3-nagbar -m "$message"
+        sleep 120
+        sudo  /lib/systemd/systemd-sleep hybrid-sleep
+
+    fi
+   elif [  "$battery_level" -eq "$warning_value" ]; then
+     notify-send -u low -i "$not_icon" -t 60000 "$warn_message"
+fi
+fi

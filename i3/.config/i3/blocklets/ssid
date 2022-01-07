@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Be sure to change the WLAN interface
+echo "$(iw dev wlp0s20f3 link | grep SSID | cut -d " " -f 2-)"
