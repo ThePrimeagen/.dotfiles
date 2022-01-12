@@ -48,7 +48,7 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 
 Plug 'rust-lang/rust.vim'
-Plug 'darrikonn/vim-gofmt'
+Plug 'fatih/vim-go'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
@@ -58,7 +58,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'theprimeagen/vim-be-good'
 Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-projectionist'
-Plug 'tomlion/vim-solidity'
 
 " telescope requirements...
 Plug 'nvim-lua/popup.nvim'
@@ -77,8 +76,14 @@ Plug 'mhinz/vim-rfc'
 Plug 'sbdchd/neoformat'
 
 " should I try another status bar???
-"  Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
-" Plug 'hoob3rt/lualine.nvim'
+Plug 'glepnir/galaxyline.nvim'
+Plug 'Avimitin/nerd-galaxyline'
+Plug 'kyazdani42/nvim-web-devicons' " lua
+Plug 'hoob3rt/lualine.nvim'
+Plug 'jremmen/vim-ripgrep'
+
+" Helping myself get gud
+Plug 'spinks/vim-leader-guide'
 
 call plug#end()
 
@@ -114,12 +119,20 @@ smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' 
 nnoremap <silent> Q <nop>
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
 " Probably rename this, because its straight silly to be a worktree.
-nnoremap <leader>; :lua require("theprimeagen.git-worktree").execute(vim.loop.cwd(), "just-build")<CR>
+nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+vnoremap <silent> <leader> ;<c-u>LeaderGuideVisual '<Space>'<CR>
+
 
 nnoremap <leader>vwh :h <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>eh :wincmd h<cr>
+nnoremap <leader>ej :wincmd j<cr>
+nnoremap <leader>ek :wincmd k<cr>
+nnoremap <leader>el :wincmd l<cr>
+
+
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
-nnoremap <leader>pv :Ex<CR>
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
@@ -184,9 +197,11 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
 
+
 augroup THE_PRIMEAGEN
     autocmd!
-    autocmd BufWritePre lua,cpp,c,h,hpp,cxx,cc Neoformat
+    " autocmd BufWritePre lua,cpp,c,h,hpp,cxx,cc Neoformat
+    autocmd BufWritePre * undojoin | Neoformat
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
 augroup END
