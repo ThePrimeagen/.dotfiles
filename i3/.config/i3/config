@@ -115,15 +115,15 @@ bindsym $mod+a focus parent
 bindsym $mod+z focus child
 
 # Workspace Variables
-set $ws1 "1: Slack "
-set $ws2 "2: Browser"
-set $ws3 "3: Terminal"
+set $ws1 "1: Browser "
+set $ws2 "2: Terminal"
+set $ws3 "3: Chat"
 set $ws4 "4: Code"
-set $ws5 "5: Files"
+set $ws5 "5: Content"
 set $ws6 "6: Zoom"
 set $ws7 "7: VirtualBox"
-set $ws8 "8: "
-set $ws9 "9: "
+set $ws8 "8: Office"
+set $ws9 "9: Media"
 
 
 # switch to workspace
@@ -230,29 +230,33 @@ exec --no-startup-id clipit &;
 exec_always feh --bg-scale /usr/share/backgrounds/warty-final-ubuntu.png
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id slack
-exec_always --no-startup-id /usr/bin/zoom
+exec_always --no-startup-id discord
+exec_always --no-startup-id /usr/bin/gimp
+exec_always --no-startup-id /snap/bin/zoom-client
 exec_always --no-startup-id /usr/bin/blueman-manager
 
 
 
 # Bind App to workspace
 # Check class by using xprop command
-assign [class="Slack"] $ws1
-assign [class="Google Chrome"] $ws2
-assign [class="Firefox"] $ws2
-assign [class="terminator"] $ws3
-assign [class="code"] $ws4
-assign [class="Pcmanfm"] $ws5
-assign [class="Zoom*"] $ws6
-assign [class="VirtualBox"] $ws7
+assign [class="(?i)google-chrome"] $ws1
+assign [class="(?i)Firefox"] $ws1
+assign [class="(?i)terminator"] $ws2
+assign [class="(?i)slack"] $ws3
+assign [class="(?i)discord"] $ws3
+assign [class="(?i)code"] $ws4
+assign [class="(?i)gimp"] $ws5
+assign [class="(?i)Pcmanfm"] $ws5
+assign [class="(?i)Zoom*"] $ws6
+assign [class="(?i)VirtualBox"] $ws7
 assign [class="(?i)libreoffice-startcenter"] $ws8
 assign [class="(?i)soffice"] $ws8
 assign [class="(?i)libreoffice"] $ws8
-assign [class="vlc"] $ws9
+assign [class="(?i)vlc"] $ws9
 
 
 # Assign to certain workspace
-assign [window_role="browser"] $ws2
+assign [window_role="browser"] $ws1
 
 # Press $mod+o followed by either f, s, l, m, v, k, d, t, Esc or Return {ENTER),
 # to launch FoxiReader, Skype, lxappearance, thunderbird, VirtualBox,
@@ -262,12 +266,10 @@ set $mode_launcher Launcher
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
-    bindsym f exec /usr/bin/code
-    bindsym z exec /usr/bin/zoom
-    bindsym l exec lxappearance
+    bindsym c exec /snap/bin/code
     bindsym v exec VirtualBox
-    bindsym d exec spectacle
-    bindsym t exec "pcmanfm /home/chrisclarkson"
+    bindsym t exec "pcmanfm /home/chris"
+
     bindsym Esc mode "default"
     bindsym Return mode "default"
 }

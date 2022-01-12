@@ -7,6 +7,7 @@ alias pwgen="pwgen -y 15"
 alias ls=exa
 alias bazel=bazelisk
 alias k=kubectl
+alias grep="rg"
 complete -F __start_kubectl k
 
 alias cat=batcat
