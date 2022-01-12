@@ -47,7 +47,6 @@ Plug 'szw/vim-maximizer'
 
 " Snippets
 Plug 'L3MON4D3/LuaSnip'
-Plug 'rafamadriz/friendly-snippets'
 
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
