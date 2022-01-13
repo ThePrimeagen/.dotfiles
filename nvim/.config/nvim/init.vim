@@ -48,8 +48,28 @@ Plug 'szw/vim-maximizer'
 " Snippets
 Plug 'L3MON4D3/LuaSnip'
 
+" Rust
 Plug 'rust-lang/rust.vim'
+
+" Golang
 Plug 'fatih/vim-go'
+
+" Typescript/Javascript
+Plug 'leafgarland/typescript-vim' " just for typescript
+Plug 'moll/vim-node' " gf to jump to source and module files, :Nedit {module_name} to edit the main file of a module
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] } " JSX (React) syntax highlighting and indenting for vim
+Plug 'othree/javascript-libraries-syntax.vim' " Supports JavaScript libraries . Should work well with other (ng, react, vue, coffeScript, typeScript...)
+Plug 'othree/yajs.vim' " Another JavaScript Syntax file for Vim. Key differences
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'vue', 'vue.html.javascript.css'] } " rovides syntax highlighting and improved indentation
+Plug 'windwp/nvim-ts-autotag'
+
+" HTML
+Plug 'mattn/emmet-vim' " provides support for expanding abbreviations similar to emmet
+
+" json
+Plug 'elzr/vim-json' " distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing. Pathogen-friendly, support in polyglot
+
+
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
@@ -97,7 +117,7 @@ let &runtimepath.=',' . expand("$HOME") . '/personal/refactoring.nvim/master'
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
 lua require("theprimeagen")
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }, autotag = { enable = true } }
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
 
