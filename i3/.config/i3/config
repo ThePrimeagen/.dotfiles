@@ -234,12 +234,6 @@ exec_always --no-startup-id discord
 exec_always --no-startup-id /usr/bin/gimp
 exec_always --no-startup-id /snap/bin/zoom-client
 exec_always --no-startup-id /usr/bin/blueman-manager
-exec_always --no-startup-id gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "[{'Gdk/WindowScalingFactor', <2>}, {'Xft/DPI', <196608>}, {'Xcursor/Size', <25000>}, {'Xcursor/size', <25000>}]"
-exec_always --no-startup-id gsettings set org.gnome.desktop.interface cursor-size 25
-exec_always --no-startup-id xrdb -merge /home/greg/.Xresources
-exec_always --no-startup-id xrandr --dpi 192
-
-
 
 # Bind App to workspace
 # Check class by using xprop command
