@@ -20,10 +20,7 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PATH=~/.axiom/interact:$PATH
-export PATH=$HOME/.r2env/bin:$PATH
-export PATH=/opt/tools/ghidra:$PATH
-export PATH=$HOME/Tools/metasploit-framework:$PATH
+
 
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
