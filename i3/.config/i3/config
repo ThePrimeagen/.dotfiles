@@ -49,7 +49,7 @@ bindsym $mod+p exec ~/.config/i3/bin/logout
 bindsym $mod+l exec i3lock -i /usr/share/backgrounds/ubuntu-default-greyscale-wallpaper.png
 bindsym $mod+c exec google-chrome
 bindsym $mod+r mode "resize"
-bindsym $mod+Shift+f exec /home/chrisclarkson/.config/i3/bin/rofifinder
+bindsym $mod+Shift+f exec /home/chris/.config/i3/bin/rofifinder
 bindsym $mod+Shift+b exec $screencast
 
 # Enable Print Screen
@@ -117,8 +117,8 @@ bindsym $mod+z focus child
 # Workspace Variables
 set $ws1 "1: Browser "
 set $ws2 "2: Terminal"
-set $ws3 "3: Chat"
-set $ws4 "4: Code"
+set $ws3 "3: Slack"
+set $ws4 "4: Discord"
 set $ws5 "5: Content"
 set $ws6 "6: Zoom"
 set $ws7 "7: VirtualBox"
@@ -235,16 +235,14 @@ exec_always --no-startup-id /usr/bin/gimp
 exec_always --no-startup-id /snap/bin/zoom-client
 exec_always --no-startup-id /usr/bin/blueman-manager
 
-
-
 # Bind App to workspace
 # Check class by using xprop command
 assign [class="(?i)google-chrome"] $ws1
 assign [class="(?i)Firefox"] $ws1
 assign [class="(?i)terminator"] $ws2
+assign [class="(?i)code"] $ws2
 assign [class="(?i)slack"] $ws3
-assign [class="(?i)discord"] $ws3
-assign [class="(?i)code"] $ws4
+assign [class="(?i)discord"] $ws4
 assign [class="(?i)gimp"] $ws5
 assign [class="(?i)Pcmanfm"] $ws5
 assign [class="(?i)Zoom*"] $ws6
