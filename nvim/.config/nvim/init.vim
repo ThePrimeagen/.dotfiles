@@ -57,11 +57,8 @@ Plug 'fatih/vim-go'
 " Typescript/Javascript
 Plug 'leafgarland/typescript-vim' " just for typescript
 Plug 'moll/vim-node' " gf to jump to source and module files, :Nedit {module_name} to edit the main file of a module
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] } " JSX (React) syntax highlighting and indenting for vim
 Plug 'othree/javascript-libraries-syntax.vim' " Supports JavaScript libraries . Should work well with other (ng, react, vue, coffeScript, typeScript...)
 Plug 'othree/yajs.vim' " Another JavaScript Syntax file for Vim. Key differences
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'vue', 'vue.html.javascript.css'] } " rovides syntax highlighting and improved indentation
-Plug 'windwp/nvim-ts-autotag'
 
 " HTML
 Plug 'mattn/emmet-vim' " provides support for expanding abbreviations similar to emmet
@@ -241,3 +238,4 @@ augroup THE_PRIMEAGEN
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
 augroup END
 
+let g:shfmt_opt="-ci"
