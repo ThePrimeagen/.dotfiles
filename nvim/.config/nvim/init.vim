@@ -47,7 +47,6 @@ Plug 'szw/vim-maximizer'
 
 " Snippets
 Plug 'L3MON4D3/LuaSnip'
-Plug 'radamadriz/friendly-snippets'
 
 " Rust
 Plug 'rust-lang/rust.vim'
@@ -86,6 +85,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'ThePrimeagen/harpoon'
 
 Plug 'vim-conf-live/vimconflive2021-colorscheme'
 Plug 'flazz/vim-colorschemes'
