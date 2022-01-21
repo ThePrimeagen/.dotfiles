@@ -33,3 +33,8 @@ set updatetime=50
 set shortmess+=c
 
 set colorcolumn=100
+
+" Editor config settings
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+au FileType gitcommit let b:EditorConfig_disable = 1
+

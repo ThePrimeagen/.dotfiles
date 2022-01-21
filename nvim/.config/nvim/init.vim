@@ -17,6 +17,7 @@ call plug#begin('~/.vim/plugged')
 
 " Yes, I am a sneaky snek now
 Plug 'ambv/black'
+Plug 'editorconfig/editorconfig-vim'
 
 " Plebvim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
