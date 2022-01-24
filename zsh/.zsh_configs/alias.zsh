@@ -10,7 +10,7 @@ alias k=kubectl
 alias grep="rg"
 complete -F __start_kubectl k
 
-alias cat=batcat
+alias cat=bat
 alias curl=curlie
 alias disable_screen='xrandr --output DP-3 --off'
 alias enable_screen='autorandr --change'

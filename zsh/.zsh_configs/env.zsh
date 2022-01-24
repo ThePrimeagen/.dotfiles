@@ -18,6 +18,7 @@ eval "$(direnv hook zsh)"
 source $HOME/.cargo/env
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 export NODE_PATH=$(realpath $(dirname $(nvm which current))/../lib/node_modules)
 
 fpath+=$ZSH/custom/completions
