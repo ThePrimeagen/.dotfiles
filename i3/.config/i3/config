@@ -1,5 +1,11 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
+#
+
+for_window [class="^.*"] border pixel 0
+smart_gaps on
+gaps inner 10
+gaps outer 5
 
 set_from_resource $darkred     color1  #000000
 set_from_resource $red         color9  #000000
