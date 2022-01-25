@@ -47,6 +47,7 @@ Plug 'szw/vim-maximizer'
 
 " Snippets
 Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 " Rust
 Plug 'rust-lang/rust.vim'

@@ -23,9 +23,9 @@ set_from_resource $darkwhite   color7  #000000
 set_from_resource $white       color15 #000000
 
 # Use custom colors for black
- set $black       #282828
- set $darkblack   #1d2021
- set $transparent #00000000
+set $black       #282828
+set $darkblack   #1d2021
+set $transparent #00000000
 
 set $mod Mod4
 set $mod1 Mod1
@@ -233,7 +233,7 @@ exec_always --no-startup-id autorandr --change
 exec --no-startup-id dunst
 exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec --no-startup-id clipit &;
-exec_always feh --bg-scale /usr/share/backgrounds/warty-final-ubuntu.png
+exec_always feh --bg-scale /home/chris/Pictures/cityscape.jpeg
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id slack
 exec_always --no-startup-id discord

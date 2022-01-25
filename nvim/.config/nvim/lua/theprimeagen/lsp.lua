@@ -34,17 +34,19 @@ cmp.setup({
 		end,
 	},
 	mapping = {
-      ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-      ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-      ['<C-k>'] = cmp.mapping.select_prev_item(),
-      ['<C-j>'] = cmp.mapping.select_next_item(),
-      ['<C-e>'] = cmp.mapping({
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      }),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+        ['<C-k>'] = cmp.mapping.select_prev_item(),
+        ['<C-j>'] = cmp.mapping.select_next_item(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<CR>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true
+        }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
     },
 
     formatting = {
@@ -116,7 +118,10 @@ require("lspconfig").ccls.setup(config({
 	end,
 }))
 
-require("lspconfig").jedi_language_server.setup(config({
+require("lspconfig").pylsp.setup(config({
+    cmd = { "pylsp" },
+    filetypes = { "python" },
+    single_file_support = true,
     root_dir = function()
         print("Python-Rootdir", vim.loop.cwd())
         return vim.loop.cwd()
@@ -232,10 +237,20 @@ require("luasnip.loaders.from_vscode").lazy_load({
 })
 
 require('lspconfig').solargraph.setup(config({
+    cmd = { "solargraph", "stdio" },
+    filetypes = { "ruby" },
+    init_options = {
+        formatting = true
+    },
     root_dir = function()
         print("Solargraph-Rootdir", vim.loop.cwd())
         return vim.loop.cwd()
     end,
+    settings = {
+        solargraph = {
+            diagnostics = true
+        },
+    }
 }))
 require'lspconfig'.terraform_lsp.setup(config({
     root_dir = function()
@@ -255,4 +270,12 @@ require('lspconfig').yamlls.setup(config({
             },
         },
     }
+}))
+require'lspconfig'.ocamllsp.setup(config({
+    cmd = { "ocamllsp" },
+    filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason" },
+    root_dir = function()
+        print("OCaml-Rootdir", vim.loop.cwd())
+        return vim.loop.cwd()
+    end,
 }))

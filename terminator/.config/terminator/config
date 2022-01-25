@@ -9,7 +9,7 @@
 [profiles]
   [[default]]
     background_color = "#282828"
-    background_darkness = 0.7
+    background_darkness = 0.8
     background_type = transparent
     cursor_color = "#7c6f64"
     font = RobotoMono Nerd Font Medium 12
