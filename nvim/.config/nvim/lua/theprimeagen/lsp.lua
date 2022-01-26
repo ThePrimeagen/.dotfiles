@@ -62,7 +62,7 @@ cmp.setup({
                 fallback()
             end
         end,
-    },
+   },
     formatting = {
         format = function(entry, vim_item)
             vim_item.kind = lspkind.presets.default[vim_item.kind]
@@ -113,24 +113,29 @@ local function config(_config)
 	}, _config or {})
 end
 
-require("lspconfig").tsserver.setup(config())
+require("lspconfig").tsserver.setup(config({
+    root_dir = function()
+        print("TypeScript-Rootdir", vim.loop.cwd())
+        return vim.loop.cwd()
+    end,
+}))
 
---[[  I cannot seem to get this woring on new computer..
-require("lspconfig").clangd.setup(config({
-	cmd = { "clangd", "--background-index", "--log=verbose" },
+require("lspconfig").ccls.setup(config({
+    init_options = {
+        cache = {
+            directory = ".ccls-cache";
+        }
+    },
     root_dir = function()
         print("clangd-Rootdir", vim.loop.cwd())
 		return vim.loop.cwd()
 	end,
 }))
---]]
-require("lspconfig").ccls.setup(config())
-
-require("lspconfig").jedi_language_server.setup(config())
 
 require("lspconfig").pylsp.setup(config({
     cmd = { "pylsp" },
     filetypes = { "python" },
+<<<<<<< HEAD
     root_dir = function(fname)
         return vim.loop.cwd()
     end,
@@ -138,13 +143,36 @@ require("lspconfig").pylsp.setup(config({
 }))
 
 require("lspconfig").svelte.setup(config())
+=======
+    single_file_support = true,
+    root_dir = function()
+        print("Python-Rootdir", vim.loop.cwd())
+        return vim.loop.cwd()
+    end,
+}))
+>>>>>>> ce4633e1c4e583fcaf8611632d744e0362403cc0
 
-require("lspconfig").solang.setup(config())
+require("lspconfig").svelte.setup(config({
+    root_dir = function()
+        print("Svelte-Rootdir", vim.loop.cwd())
+        return vim.loop.cwd()
+    end,
+}))
 
-require("lspconfig").cssls.setup(config())
+require("lspconfig").cssls.setup(config({
+    root_dir = function()
+        print("cssls-Rootdir", vim.loop.cwd())
+        return vim.loop.cwd()
+    end,
+    cmd = {"css-languageserver", "--stdio"},
+}))
 
 require("lspconfig").gopls.setup(config({
 	cmd = { "gopls", "serve" },
+    root_dir = function()
+        print("Go-Rootdir", vim.loop.cwd())
+        return vim.loop.cwd()
+    end,
 	settings = {
 		gopls = {
 			analyses = {
@@ -158,6 +186,10 @@ require("lspconfig").gopls.setup(config({
 -- who even uses this?
 require("lspconfig").rust_analyzer.setup(config({
     cmd = { "rustup", "run", "stable", "rust-analyzer"},
+    root_dir = function()
+        print("Rust-Rootdir", vim.loop.cwd())
+        return vim.loop.cwd()
+    end,
     --[[
     settings = {
         rust = {
@@ -228,14 +260,46 @@ require("luasnip.loaders.from_vscode").lazy_load({
 	exclude = {},
 })
 
-require('lspconfig').solargraph.setup{}
-require'lspconfig'.terraform_lsp.setup{}
-require('lspconfig').yamlls.setup {
-	settings = {
-	  yaml = {
-		schemas = {
-		  ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.k8s.yaml",
-		},
-	  },
-	}
-  }
+require('lspconfig').solargraph.setup(config({
+    cmd = { "solargraph", "stdio" },
+    filetypes = { "ruby" },
+    init_options = {
+        formatting = true
+    },
+    root_dir = function()
+        print("Solargraph-Rootdir", vim.loop.cwd())
+        return vim.loop.cwd()
+    end,
+    settings = {
+        solargraph = {
+            diagnostics = true
+        },
+    }
+}))
+require'lspconfig'.terraform_lsp.setup(config({
+    root_dir = function()
+        print("Terraform-Rootdir", vim.loop.cwd())
+        return vim.loop.cwd()
+    end,
+}))
+require('lspconfig').yamlls.setup(config({
+    root_dir = function()
+        print("YAML-Rootdir", vim.loop.cwd())
+        return vim.loop.cwd()
+    end,
+    settings = {
+        yaml = {
+            schemas = {
+                ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.k8s.yaml",
+            },
+        },
+    }
+}))
+require'lspconfig'.ocamllsp.setup(config({
+    cmd = { "ocamllsp" },
+    filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason" },
+    root_dir = function()
+        print("OCaml-Rootdir", vim.loop.cwd())
+        return vim.loop.cwd()
+    end,
+}))

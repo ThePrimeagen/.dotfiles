@@ -1,5 +1,6 @@
 #!/bin/bash
-date_time=$(date '+%a %d-%m-%Y %R:%S')
+echo \#FFFFFF
+date_time=$(date '+%a %R:%S %d-%m-%Y ')
 echo "$date_time"
 
 #Buttons Control
