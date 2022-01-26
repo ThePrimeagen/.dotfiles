@@ -21,32 +21,48 @@ require('lspkind').init({
 cmp.setup({
     preselect = true,
     completion = { completeopt = 'menu,menuone,noinsert' },
-	snippet = {
-		expand = function(args)
-			-- For `vsnip` user.
-			-- vim.fn["vsnip#anonymous"](args.body)
+    snippet = {
+        expand = function(args)
+            -- For `vsnip` user.
+            -- vim.fn["vsnip#anonymous"](args.body)
 
-			-- For `luasnip` user.
-			require("luasnip").lsp_expand(args.body)
+            -- For `luasnip` user.
+            require("luasnip").lsp_expand(args.body)
 
-			-- For `ultisnips` user.
-			-- vim.fn["UltiSnips#Anon"](args.body)
-		end,
-	},
-	mapping = {
-      ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-      ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-      ['<C-k>'] = cmp.mapping.select_prev_item(),
-      ['<C-j>'] = cmp.mapping.select_next_item(),
-      ['<C-e>'] = cmp.mapping({
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      }),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+            -- For `ultisnips` user.
+            -- vim.fn["UltiSnips#Anon"](args.body)
+        end,
     },
-
+    mapping = {
+        ['<C-k>'] = cmp.mapping.select_prev_item(),
+        ['<C-j>'] = cmp.mapping.select_next_item(),
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<CR>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        },
+        ['<Tab>'] = function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                fallback()
+            end
+        end,
+        ['<S-Tab>'] = function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end,
+    },
     formatting = {
         format = function(entry, vim_item)
             vim_item.kind = lspkind.presets.default[vim_item.kind]
@@ -62,24 +78,24 @@ cmp.setup({
         end
     },
 
-	sources = {
+    sources = {
         -- tabnine completion? yayaya
 
         -- { name = "cmp_tabnine" },
 
-		{ name = "nvim_lsp" },
+        { name = "nvim_lsp" },
 
-		-- For vsnip user.
-		-- { name = 'vsnip' },
+        -- For vsnip user.
+        -- { name = 'vsnip' },
 
-		-- For luasnip user.
-		{ name = "luasnip" },
+        -- For luasnip user.
+        { name = "luasnip" },
 
-		-- For ultisnips user.
-		-- { name = 'ultisnips' },
+        -- For ultisnips user.
+        -- { name = 'ultisnips' },
 
-		{ name = "buffer" },
-	},
+        { name = "buffer" },
+    },
 })
 
 local tabnine = require('cmp_tabnine.config')
@@ -111,6 +127,15 @@ require("lspconfig").clangd.setup(config({
 require("lspconfig").ccls.setup(config())
 
 require("lspconfig").jedi_language_server.setup(config())
+
+require("lspconfig").pylsp.setup(config({
+    cmd = { "pylsp" },
+    filetypes = { "python" },
+    root_dir = function(fname)
+        return vim.loop.cwd()
+    end,
+    single_file_support = true
+}))
 
 require("lspconfig").svelte.setup(config())
 
