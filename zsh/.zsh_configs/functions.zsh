@@ -62,6 +62,15 @@ function prep-adr() {
     cp $NODE_PATH/madr/template/* docs/adr
 }
 
-function docker-sqlmap(){ 
-    docker run --rm --network=host -it -v /tmp/sqlmap:/root/.sqlmap/ paoloo/sqlmap "$@" 
+function docker-sqlmap(){
+    docker run --rm --network=host -it -v /tmp/sqlmap:/root/.sqlmap/ paoloo/sqlmap "$@"
+}
+
+function find_pr_for_commit() {
+    git log \
+        --first-parent \
+        --date=relative \
+        --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset' \
+        $(perl -ne 'print if ($seen{$_} .= @ARGV) =~ /10$/' <(git rev-list --ancestry-path "$@"..master) <(git rev-list --first-parent "$@"..master) | tail -n 1)
+
 }

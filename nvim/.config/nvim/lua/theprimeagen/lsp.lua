@@ -47,8 +47,8 @@ cmp.setup({
         ['<Tab>'] = function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
+            elseif require('luasnip').expand_or_jumpable() then
+                require('luasnip').expand_or_jump()
             else
                 fallback()
             end
@@ -56,8 +56,8 @@ cmp.setup({
         ['<S-Tab>'] = function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
+            elseif require('luasnip').jumpable(-1) then
+                require('luasnip').jump(-1)
             else
                 fallback()
             end
@@ -135,22 +135,14 @@ require("lspconfig").ccls.setup(config({
 require("lspconfig").pylsp.setup(config({
     cmd = { "pylsp" },
     filetypes = { "python" },
-<<<<<<< HEAD
     root_dir = function(fname)
+        print("Python-Rootdir", vim.loop.cwd())
         return vim.loop.cwd()
     end,
     single_file_support = true
 }))
 
 require("lspconfig").svelte.setup(config())
-=======
-    single_file_support = true,
-    root_dir = function()
-        print("Python-Rootdir", vim.loop.cwd())
-        return vim.loop.cwd()
-    end,
-}))
->>>>>>> ce4633e1c4e583fcaf8611632d744e0362403cc0
 
 require("lspconfig").svelte.setup(config({
     root_dir = function()
