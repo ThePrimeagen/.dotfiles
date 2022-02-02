@@ -81,7 +81,7 @@ cmp.setup({
     sources = {
         -- tabnine completion? yayaya
 
-        -- { name = "cmp_tabnine" },
+        { name = "cmp_tabnine" },
 
         { name = "nvim_lsp" },
 
@@ -89,7 +89,7 @@ cmp.setup({
         -- { name = 'vsnip' },
 
         -- For luasnip user.
-        { name = "luasnip" },
+        -- { name = "luasnip" },
 
         -- For ultisnips user.
         -- { name = 'ultisnips' },
