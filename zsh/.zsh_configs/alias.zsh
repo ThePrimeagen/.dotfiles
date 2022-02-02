@@ -6,8 +6,10 @@ alias vi=nvim
 alias pwgen="pwgen -y 15"
 alias ls=exa
 alias bazel=bazelisk
-alias k=kubectl
 alias grep="rg"
+
+source <(kubectl completion zsh)
+alias k=kubectl
 complete -F __start_kubectl k
 
 alias cat=bat

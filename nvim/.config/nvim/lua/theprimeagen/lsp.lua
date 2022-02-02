@@ -142,6 +142,7 @@ require("lspconfig").pylsp.setup(config({
     end,
 }))
 
+
 require("lspconfig").svelte.setup(config({
     root_dir = function()
         print("Svelte-Rootdir", vim.loop.cwd())
@@ -272,47 +273,7 @@ require'lspconfig'.terraform_lsp.setup(config({
         return vim.loop.cwd()
     end,
 }))
---[[
-require('lspconfig').yamlls.setup(config({
-    root_dir = function()
-        print("YAML-Rootdir", vim.loop.cwd())
-        return vim.loop.cwd()
-    end,
-    settings = {
-        yaml = {
-            schemas = {
-                ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.k8s.yaml",
-            },
-        },
-    }
-}))--]]
 
-require('lspconfig').ansiblels.setup(config({
-    root_dir = function()
-        print("Ansible-Rootdir", vim.loop.cwd())
-        return vim.loop.cwd()
-    end,
-    cmd = { "ansible-language-server", "--stdio" },
-    filetypes = { "yaml", "yaml.ansible" },
-    settings = {
-        ansible = {
-            ansible = {
-                path = "ansible"
-            },
-            ansibleLint = {
-                enabled = true,
-                path = "ansible-lint"
-            },
-            executionEnvironment = {
-                enabled = false
-            },
-            python = {
-                interpreterPath = "python"
-            },
-        },
-    },
-    single_file_support = true,
-}))
 
 require'lspconfig'.ocamllsp.setup(config({
     cmd = { "ocamllsp" },
