@@ -12,6 +12,7 @@ rg
 ps
 mv
 kill
+kubectl
 lsof
 less
 head
@@ -29,6 +30,7 @@ git-worktree
 git-status
 git-commit
 git-rebase
+go
 docker
 docker-compose
 stow

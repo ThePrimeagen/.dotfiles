@@ -1,6 +1,5 @@
 ansible
 golang
-solidity
 nodejs
 javascript
 tmux
@@ -12,9 +11,11 @@ lua
 rust
 python
 bash
-php
-haskell
 ArnoldC
 css
 html
 gdb
+terraform
+ruby
+rizin
+radare2
