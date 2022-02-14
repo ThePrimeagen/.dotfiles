@@ -120,6 +120,15 @@ require("lspconfig").tsserver.setup(config({
     end,
 }))
 
+require('lspconfig').solang.setup(config({
+    cmd = { "solang", "--language-server", "--target", "ewasm" },
+    filetypes = { "solidity" },
+    root_dir = function()
+        print("TypeScript-Rootdir", vim.loop.cwd())
+        return vim.loop.cwd()
+    end,
+}))
+
 require("lspconfig").ccls.setup(config({
     init_options = {
         cache = {

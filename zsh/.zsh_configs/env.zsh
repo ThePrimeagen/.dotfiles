@@ -16,6 +16,11 @@ eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(direnv hook zsh)"
 source $HOME/.cargo/env
+eval "$(goenv init -)"
+
+# PATH exports for Go env,TODO:  find better way
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"

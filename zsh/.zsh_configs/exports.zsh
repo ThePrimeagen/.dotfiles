@@ -30,6 +30,10 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export RBENV_ROOT="${HOME}/.rbenv"
 export PATH="${RBENV_ROOT}/bin:${PATH}"
 
+# Go env
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+
 export NVM_DIR="$HOME/.nvm"
 export GIT_MERGE_AUTOCOMMIT=no
 export TERM=xterm-256color

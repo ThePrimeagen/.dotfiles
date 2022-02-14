@@ -53,7 +53,7 @@ bindsym $mod+x exec $terminator
 # Custom bindsyms
 bindsym $mod+p exec ~/.config/i3/bin/logout
 bindsym $mod+l exec i3lock -i /usr/share/backgrounds/ubuntu-default-greyscale-wallpaper.png
-bindsym $mod+c exec google-chrome
+bindsym $mod+c exec brave-browser
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+f exec /home/chris/.config/i3/bin/rofifinder
 bindsym $mod+Shift+b exec $screencast
@@ -244,6 +244,7 @@ exec_always --no-startup-id /usr/bin/blueman-manager
 # Bind App to workspace
 # Check class by using xprop command
 assign [class="(?i)google-chrome"] $ws1
+assign [class="(?i)brave-browser"] $ws1
 assign [class="(?i)Firefox"] $ws1
 assign [class="(?i)terminator"] $ws2
 assign [class="(?i)code"] $ws2
@@ -270,7 +271,8 @@ set $mode_launcher Launcher
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
-    bindsym c exec /snap/bin/code
+    bindsym g exec /usr/bin/gimp
+    bindsym p exec pavucontrol
     bindsym v exec VirtualBox
     bindsym t exec "pcmanfm /home/chris"
 
