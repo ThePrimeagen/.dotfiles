@@ -88,3 +88,8 @@ function rga-fzf() {
 	echo "opening $file" &&
 	xdg-open "$file"
 }
+
+function branch_and_worktree() {
+    git branch $1
+    git worktree add $1 $1
+}
