@@ -1,5 +1,5 @@
-local sumneko_root_path = "/home/theprimeagen/personal/lua-language-server"
-local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
+local sumneko_root_path = "/home/mpaulson/personal/lua-language-server"
+local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -14,8 +14,8 @@ local source_mapping = {
 	path = "[Path]",
 }
 local lspkind = require("lspkind")
-require('lspkind').init({
-    with_text = true,
+require("lspkind").init({
+	with_text = true,
 })
 
 cmp.setup({
@@ -37,25 +37,25 @@ cmp.setup({
 		["<C-Space>"] = cmp.mapping.complete(),
 	},
 
-    formatting = {
-        format = function(entry, vim_item)
-            vim_item.kind = lspkind.presets.default[vim_item.kind]
-            local menu = source_mapping[entry.source.name]
-            if entry.source.name == 'cmp_tabnine' then
-                if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-                    menu = entry.completion_item.data.detail .. ' ' .. menu
-                end
-                vim_item.kind = ''
-            end
-            vim_item.menu = menu
-            return vim_item
-        end
-    },
+	formatting = {
+		format = function(entry, vim_item)
+			vim_item.kind = lspkind.presets.default[vim_item.kind]
+			local menu = source_mapping[entry.source.name]
+			if entry.source.name == "cmp_tabnine" then
+				if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+					menu = entry.completion_item.data.detail .. " " .. menu
+				end
+				vim_item.kind = ""
+			end
+			vim_item.menu = menu
+			return vim_item
+		end,
+	},
 
 	sources = {
-        -- tabnine completion? yayaya
+		-- tabnine completion? yayaya
 
-        -- { name = "cmp_tabnine" },
+		{ name = "cmp_tabnine" },
 
 		{ name = "nvim_lsp" },
 
@@ -72,13 +72,13 @@ cmp.setup({
 	},
 })
 
-local tabnine = require('cmp_tabnine.config')
+local tabnine = require("cmp_tabnine.config")
 tabnine:setup({
-    max_lines = 1000,
-    max_num_results = 20,
-    sort = true,
+	max_lines = 1000,
+	max_num_results = 20,
+	sort = true,
 	run_on_every_keystroke = true,
-	snippet_placeholder = '..',
+	snippet_placeholder = "..",
 })
 
 local function config(_config)
@@ -122,8 +122,8 @@ require("lspconfig").gopls.setup(config({
 
 -- who even uses this?
 require("lspconfig").rust_analyzer.setup(config({
-    cmd = { "rustup", "run", "nightly", "rust-analyzer"},
-    --[[
+	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+	--[[
     settings = {
         rust = {
             unstable_features = true,

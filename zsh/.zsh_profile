@@ -24,10 +24,12 @@ export NF_IDFILE=$HOME/.idfile
 export DENO_INSTALL="$HOME/.deno"
 export N_PREFIX="$HOME/.local/n"
 export DOTFILES=$HOME/.dotfiles
+export BOGART=$HOME/work/bogart
 
 addToPathFront $HOME/.local/.npm-global/bin
 addToPathFront $HOME/.local/n/bin/
 addToPathFront $HOME/.local/go/bin
+addToPathFront $HOME/go/bin
 
 # Where should I put you?
 bindkey -s ^f "tmux-sessionizer\n"

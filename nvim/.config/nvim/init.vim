@@ -25,7 +25,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'onsails/lspkind-nvim'
-" Plug 'github/copilot.vim'
+Plug 'github/copilot.vim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 
 " Plug 'nvim-lua/completion-nvim'
@@ -57,6 +57,7 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-dispatch'
 Plug 'theprimeagen/vim-be-good'
 Plug 'gruvbox-community/gruvbox'
+Plug 'luisiacc/gruvbox-baby'
 Plug 'tpope/vim-projectionist'
 Plug 'tomlion/vim-solidity'
 
@@ -151,7 +152,7 @@ xnoremap <leader>p "_dP
 " next greatest remap ever : asbjornHaland
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
-nnoremap <leader>Y gg"+yG
+nmap <leader>Y "+Y
 
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
@@ -186,7 +187,7 @@ augroup END
 
 augroup THE_PRIMEAGEN
     autocmd!
-    autocmd BufWritePre lua,cpp,c,h,hpp,cxx,cc Neoformat
+    autocmd BufWritePre *.lua Neoformat
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
 augroup END
