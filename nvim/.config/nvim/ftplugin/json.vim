@@ -1,5 +1,5 @@
-nnoremap [P :lua require("jvim.nvim").to_parent()
-nnoremap [p :lua require("jvim.nvim").to_immediate()
-nnoremap [s :lua require("jvim.nvim").prev_sibling()
-nnoremap ]s :lua require("jvim.nvim").next_sibling()
+nnoremap <left> :lua require("jvim").to_parent()<CR>
+nnoremap <right> :lua require("jvim").descend()<CR>
+nnoremap <up> :lua require("jvim").prev_sibling()<CR>
+nnoremap <down> :lua require("jvim").next_sibling()<CR>
 

@@ -3,7 +3,6 @@ require("theprimeagen.git-worktree")
 require("theprimeagen.debugger")
 require("theprimeagen.harpoon")
 require("theprimeagen.lsp")
-require("theprimeagen.json")
 
 P = function(v)
 	print(vim.inspect(v))

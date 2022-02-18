@@ -88,6 +88,7 @@ let &runtimepath.=',' . expand("$HOME") . '/personal/harpoon/tmux'
 let &runtimepath.=',' . expand("$HOME") . '/personal/vim-with-me/ui'
 let &runtimepath.=',' . expand("$HOME") . '/personal/git-worktree.nvim/master'
 let &runtimepath.=',' . expand("$HOME") . '/personal/refactoring.nvim/master'
+let &runtimepath.=',' . expand("$HOME") . '/personal/jvim.nvim'
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
