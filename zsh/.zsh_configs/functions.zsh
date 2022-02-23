@@ -92,4 +92,8 @@ function rga-fzf() {
 function branch_and_worktree() {
     git branch $1
     git worktree add $1 $1
+    cd $1
+    pyenv virtualenv $(basename "$(pwd)")
+    pyenv activate $(basename "$(pwd)")
+    pip install -r requirements.txt
 }

@@ -21,6 +21,17 @@ require("telescope").setup({
                 ["<C-q>"] = actions.send_to_qflist,
             },
         },
+        vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--hidden",
+            "--trim" -- add this value
+        },
     },
     extensions = {
         fzy_native = {

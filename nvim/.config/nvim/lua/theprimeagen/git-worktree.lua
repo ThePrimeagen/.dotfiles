@@ -1,9 +1,7 @@
 local Worktree = require("git-worktree")
 
---local M = {}
-
---Worktree.on_tree_change(function(_ --[[op]], path, _ --[[upstream]])
---    M.execute(path.path)
---end)
-
---return M
+Worktree.on_tree_change(function(op, metadata)
+  if op == Worktree.Operations.Switch then
+    print("Switched from " .. metadata.prev_path .. " to " .. metadata.path)
+  end
+end)
