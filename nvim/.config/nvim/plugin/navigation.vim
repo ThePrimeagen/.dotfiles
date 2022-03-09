@@ -1,7 +1,3 @@
-nnoremap <C-Left> :call AfPPAlternatePluthPluth()<CR>
-nnoremap <C-Up> :call AfPPAlternate()<CR>
-inoremap <C-Left> <esc>:call AfPPAlternatePluthPluth()<CR>
-inoremap <C-Up> <esc>:call AfPPAlternate()<CR>
 nnoremap <C-k> :cnext<CR>zz
 nnoremap <C-j> :cprev<CR>zz
 nnoremap <leader>k :lnext<CR>zz

@@ -25,7 +25,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'onsails/lspkind-nvim'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 
 " Plug 'nvim-lua/completion-nvim'
@@ -37,6 +37,7 @@ Plug 'simrat39/symbols-outline.nvim'
 " Neovim Tree shitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+" Plug 'romgrk/nvim-treesitter-context'
 
 " Debugger Plugins
 Plug 'mfussenegger/nvim-dap'
@@ -52,7 +53,6 @@ Plug 'darrikonn/vim-gofmt'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
-Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-dispatch'
 Plug 'theprimeagen/vim-be-good'
@@ -87,8 +87,9 @@ call plug#end()
 let &runtimepath.=',' . expand("$HOME") . '/personal/harpoon/tmux'
 let &runtimepath.=',' . expand("$HOME") . '/personal/vim-with-me/ui'
 let &runtimepath.=',' . expand("$HOME") . '/personal/git-worktree.nvim/master'
-let &runtimepath.=',' . expand("$HOME") . '/personal/refactoring.nvim/print-in-console'
+let &runtimepath.=',' . expand("$HOME") . '/personal/refactoring.nvim/master'
 let &runtimepath.=',' . expand("$HOME") . '/personal/jvim.nvim'
+let &runtimepath.=',' . expand("$HOME") . '/personal/nvim-treesitter-context'
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
@@ -188,7 +189,7 @@ augroup END
 
 augroup THE_PRIMEAGEN
     autocmd!
-    autocmd BufWritePre *.lua Neoformat
+    " autocmd BufWritePre *.lua Neoformat
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
 augroup END

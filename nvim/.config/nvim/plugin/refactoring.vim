@@ -2,8 +2,9 @@ lua require("theprimeagen")
 lua require("refactoring").setup({})
 
 vnoremap <silent> <leader>rr :lua require("theprimeagen.telescope").refactors()<CR>
-vnoremap <silent> <leader>re :lua require("refactoring").refactor(106)<CR>
 
+" Extracts
+vnoremap <silent> <leader>re :lua require("refactoring").refactor(106)<CR>
 nnoremap <silent> <leader>ri :lua require("refactoring").refactor(123)<CR>
 
 nnoremap <silent> <leader>dh :lua print(vim.inspect(require("refactoring").debug.get_path()))<CR>
