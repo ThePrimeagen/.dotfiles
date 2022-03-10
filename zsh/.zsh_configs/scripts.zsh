@@ -30,3 +30,8 @@ function git_hunt(){
         git cat-file -p $o;
     done | rg -a $1
 }
+
+function deep_scan(){
+    mkdir -p $1
+    sudo nmap -sS -p- -A -sC -sV -oA $1/$1 $2 -vvvv
+}
