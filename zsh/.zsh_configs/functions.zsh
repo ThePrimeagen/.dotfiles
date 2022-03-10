@@ -97,3 +97,11 @@ function branch_and_worktree() {
     pyenv activate $(basename "$(pwd)")
     pip install -r requirements.txt
 }
+
+function update_system(){
+    sudo apt update && \
+        sudo apt upgrade -y && \
+        sudo apt dist-upgrade -y && \
+        sudo apt full-upgrade -y && \
+        sudo apt autoremove -y
+}

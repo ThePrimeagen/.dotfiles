@@ -12,7 +12,7 @@ source <(kubectl completion zsh)
 alias k=kubectl
 complete -F __start_kubectl k
 
-alias cat=bat
+alias cat=batcat
 alias curl=curlie
 alias disable_screen='xrandr --output DP-3 --off'
 alias enable_screen='autorandr --change'
@@ -28,3 +28,5 @@ alias lS='ls -1FSsh'
 alias lart='ls -1Fcart'
 alias lrt='ls -1Fcrt'
 
+# Kali Aliases
+alias ungron="gron --ungron"
