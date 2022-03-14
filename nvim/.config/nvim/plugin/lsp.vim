@@ -19,8 +19,8 @@ nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <leader>vll :call LspLocationList()<CR>
 
 augroup THE_PRIMEAGEN_LSP
-    autocmd!
-    autocmd! BufWrite,BufEnter,InsertLeave * :call LspLocationList()
+   autocmd!
+   autocmd! BufWrite,BufEnter,InsertLeave :call LspLocationList()
 augroup END
 
 let g:compe = {}
