@@ -37,7 +37,7 @@ Plug 'simrat39/symbols-outline.nvim'
 " Neovim Tree shitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
-" Plug 'romgrk/nvim-treesitter-context'
+Plug 'romgrk/nvim-treesitter-context'
 
 " Debugger Plugins
 Plug 'mfussenegger/nvim-dap'
@@ -84,7 +84,7 @@ Plug 'sbdchd/neoformat'
 call plug#end()
 
 " Adding local modules
-let &runtimepath.=',' . expand("$HOME") . '/personal/harpoon/tmux'
+let &runtimepath.=',' . expand("$HOME") . '/personal/harpoon/master'
 let &runtimepath.=',' . expand("$HOME") . '/personal/vim-with-me/ui'
 let &runtimepath.=',' . expand("$HOME") . '/personal/git-worktree.nvim/master'
 let &runtimepath.=',' . expand("$HOME") . '/personal/refactoring.nvim/master'
