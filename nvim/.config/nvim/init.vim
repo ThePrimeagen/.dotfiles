@@ -28,6 +28,9 @@ Plug 'onsails/lspkind-nvim'
 " Plug 'github/copilot.vim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 
+" Diagram
+Plug 'jbyuki/venn.nvim'
+
 " Plug 'nvim-lua/completion-nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'simrat39/symbols-outline.nvim'
@@ -90,6 +93,7 @@ let &runtimepath.=',' . expand("$HOME") . '/personal/git-worktree.nvim/master'
 let &runtimepath.=',' . expand("$HOME") . '/personal/refactoring.nvim/master'
 let &runtimepath.=',' . expand("$HOME") . '/personal/jvim.nvim'
 let &runtimepath.=',' . expand("$HOME") . '/personal/nvim-treesitter-context'
+let &runtimepath.=',' . expand("$HOME") . '/personal/tree-navigation'
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
@@ -127,7 +131,7 @@ nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>rp :resize 100<CR>
-nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
+nnoremap <Leader>ee oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>
 nnoremap <Leader>cpu a%" PRIu64 "<esc>
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 nnoremap <leader>gt <Plug>PlenaryTestFile
