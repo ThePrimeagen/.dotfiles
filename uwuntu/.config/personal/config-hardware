@@ -124,48 +124,30 @@ bindsym $mod+a focus parent
 # bindsym $mod+Shift+9 move container to workspace 9
 # bindsym $mod+Shift+0 move container to workspace 10
 
-# NOTE: This is some real tom fooliery with my keyboard layout
-#  ZMK will send a shift mod with the items that require a shift key on a
-#  regular keyboard.  so though it defines a keycode as "LEFT_BRACE" it really
-#  is shift_L + LEFT_BRACE.  So you will notice the odd peppering of shifts and
-#  non shifts
 # switch to workspace
-bindsym $mod+Shift+plus workspace 1
+bindsym $mod+Shift+equal workspace 1
 bindsym $mod+bracketleft workspace 2
-bindsym $mod+Shift+braceleft workspace 3
-bindsym $mod+Shift+parenleft workspace 4
-bindsym $mod+Shift+ampersand workspace 5
+bindsym $mod+Shift+bracketleft workspace 3
+bindsym $mod+Shift+9 workspace 4
+bindsym $mod+Shift+7 workspace 5
 bindsym $mod+equal workspace 6
-bindsym $mod+Shift+parenright workspace 7
-bindsym $mod+Shift+braceright workspace 8
+bindsym $mod+Shift+0 workspace 7
+bindsym $mod+Shift+bracketright workspace 8
 bindsym $mod+bracketright workspace 9
-bindsym $mod+Shift+asterisk workspace 10
+bindsym $mod+Shift+8 workspace 10
 
-# NOTE: since i have to press shift to get these symbols
-# move focused container to workspace.
-#  I wanted to use this as my method of moving spaces around, but it doesn't
-#  seem to work, but when i provide the keycode + shift it seems to work well.
-# bindsym $mod+Shift+kp_1 move container to workspace 1
-# bindsym $mod+Shift+kp_2 move container to workspace 2
-# bindsym $mod+Shift+kp_3 move container to workspace 3
-# bindsym $mod+Shift+kp_4 move container to workspace 4
-# bindsym $mod+Shift+kp_5 move container to workspace 5
-# bindsym $mod+Shift+kp_6 move container to workspace 6
-# bindsym $mod+Shift+kp_7 move container to workspace 7
-# bindsym $mod+Shift+kp_8 move container to workspace 8
-# bindsym $mod+Shift+kp_9 move container to workspace 9
-# bindsym $mod+Shift+kp_0 move container to workspace 10
+# move focused container to workspace
+bindsym $mod+1 move container to workspace 1
+bindsym $mod+2 move container to workspace 2
+bindsym $mod+3 move container to workspace 3
+bindsym $mod+4 move container to workspace 4
+bindsym $mod+5 move container to workspace 5
+bindsym $mod+6 move container to workspace 6
+bindsym $mod+7 move container to workspace 7
+bindsym $mod+8 move container to workspace 8
+bindsym $mod+9 move container to workspace 9
+bindsym $mod+0 move container to workspace 10
 
-bindcode $mod+Shift+87 move container to workspace 1
-bindcode $mod+Shift+88 move container to workspace 2
-bindcode $mod+Shift+89 move container to workspace 3
-bindcode $mod+Shift+90 move container to workspace 4
-bindcode $mod+Shift+91 move container to workspace 5
-bindcode $mod+Shift+92 move container to workspace 6
-bindcode $mod+Shift+93 move container to workspace 7
-bindcode $mod+Shift+94 move container to workspace 8
-bindcode $mod+Shift+95 move container to workspace 9
-bindcode $mod+Shift+96 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

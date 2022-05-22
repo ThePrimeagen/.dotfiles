@@ -1,3 +1,4 @@
+--[[
 local dap_install = require("dap-install")
 dap_install.config("chrome", {})
 
@@ -17,3 +18,4 @@ dap.configurations.typescriptreact = { -- change to typescript if needed
 }
 
 require('dap.ext.vscode').load_launchjs()
+--]]

@@ -4,6 +4,7 @@ alias aoeu="setxkbmap us"
 alias lkj="setxkbmap real-prog-dvorak"
 alias snth="setxkbmap us"
 alias xsc="xclip -selection clipboard"
+alias my_ip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
 
 #!/usr/bin/env bash
 alias esc="$HOME/.config/sway/config"
