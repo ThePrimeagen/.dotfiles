@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+rm -rf $XDG_CONFIG_HOME/nvim
+if [[ -z "$1" || "$1" == "lua" ]]; then
+    stow nvim-lua-config
+else
+    stow nvim
+fi
+
