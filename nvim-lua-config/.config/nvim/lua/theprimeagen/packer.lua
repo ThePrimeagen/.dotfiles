@@ -6,8 +6,6 @@ return require('packer').startup(function()
 
     -- TJ created lodash of neovim
     use('nvim-lua/plenary.nvim')
-    
-    -- TJ created lodash of neovim
     use('nvim-telescope/telescope.nvim')
     
     -- Primeagen doesn't create lodash
@@ -19,6 +17,13 @@ return require('packer').startup(function()
     -- Colorscheme section
     use("gruvbox-community/gruvbox")
     use("folke/tokyonight.nvim")
+
+    use('nvim-treesitter/nvim-treesitter', {
+        run = ':TSUpdate'
+    })
+
+    use('nvim-treesitter/playground')
+    use('romgrk/nvim-treesitter-context')
     
 	--[[
     --
