@@ -1,6 +1,7 @@
 local Remap = require("theprimeagen.keymap")
 local nnoremap = Remap.nnoremap
 local vnoremap = Remap.vnoremap
+local inoremap = Remap.inoremap
 local xnoremap = Remap.xnoremap
 local nmap = Remap.nmap
 
@@ -25,3 +26,9 @@ nmap("<leader>Y", "\"+Y")
 
 nnoremap("<leader>d", "\"_d")
 vnoremap("<leader>d", "\"_d")
+
+vnoremap("<leader>d", "\"_d")
+
+-- This is going to get me cancelled
+inoremap("<C-c>", "<Esc>")
+
