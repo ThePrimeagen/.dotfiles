@@ -8,3 +8,5 @@ nnoremap("<leader>gs", function()
         kind = "split_above"
     })
 end);
+
+nnoremap("<leader>ga", "<cmd>!git fetch --all<CR>");
