@@ -11,6 +11,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 local source_mapping = {
+	youtube = "[Suck it YT]",
 	buffer = "[Buffer]",
 	nvim_lsp = "[LSP]",
 	nvim_lua = "[Lua]",
@@ -71,6 +72,8 @@ cmp.setup({
 		-- { name = 'ultisnips' },
 
 		{ name = "buffer" },
+
+		{ name = "youtube" },
 	},
 })
 
@@ -91,8 +94,8 @@ local function config(_config)
 			nnoremap("K", function() vim.lsp.buf.hover() end)
 			nnoremap("<leader>vws", function() vim.lsp.buf.workspace_symbol() end)
 			nnoremap("<leader>vd", function() vim.diagnostic.open_float() end)
-			nnoremap("[d", function() vim.lsp.diagnostic.goto_next() end)
-			nnoremap("]d", function() vim.lsp.diagnostic.goto_prev() end)
+			nnoremap("[d", function() vim.diagnostic.goto_next() end)
+			nnoremap("]d", function() vim.diagnostic.goto_prev() end)
 			nnoremap("<leader>vca", function() vim.lsp.buf.code_action() end)
 			nnoremap("<leader>vrr", function() vim.lsp.buf.references() end)
 			nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end)

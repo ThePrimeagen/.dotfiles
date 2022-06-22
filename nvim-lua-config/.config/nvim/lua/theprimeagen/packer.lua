@@ -38,6 +38,7 @@ return require("packer").startup(function()
 
     use("nvim-treesitter/playground")
     use("romgrk/nvim-treesitter-context")
+
     use("mfussenegger/nvim-dap")
     use("rcarriga/nvim-dap-ui")
     use("theHamsta/nvim-dap-virtual-text")

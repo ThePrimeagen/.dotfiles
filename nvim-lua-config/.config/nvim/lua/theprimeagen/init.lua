@@ -1,6 +1,7 @@
 local augroup = vim.api.nvim_create_augroup
 ThePrimeagenGroup = augroup('ThePrimeagen', {})
 
+require("theprimeagen.cmp-use-rust")
 require("theprimeagen.set")
 require("theprimeagen.packer")
 require("theprimeagen.neogit")

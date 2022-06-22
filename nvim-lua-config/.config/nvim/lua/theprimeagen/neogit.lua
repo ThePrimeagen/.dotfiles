@@ -3,7 +3,7 @@ local nnoremap = require('theprimeagen.keymap').nnoremap
 
 neogit.setup {}
 
-nnoremap("<leader>gs", function() 
+nnoremap("<leader>gs", function()
     neogit.open({ })
 end);
 
