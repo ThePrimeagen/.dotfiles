@@ -19,8 +19,6 @@ dapui.setup({
             elements = {
                 -- Elements can be strings or table with id and size keys.
                 { id = "scopes", size = 0.25 },
-                "breakpoints",
-                "stacks",
                 "watches",
             },
             size = 40,
@@ -48,7 +46,7 @@ nnoremap("<End>", function()
     dapui.toggle(2)
 end)
 
-nnoremap("<leader>6", function()
+nnoremap("<leader><leader>", function()
     dap.close()
 end)
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 while [ : ]; do
-    ~/personal/screenkey/screenkey --geometry 1410x900+2412+1200 -s medium --opacity 0.4
+    ~/personal/screenkey/screenkey --geometry 710x900+1212+151 -s medium --opacity 0.4
     pid=$!
     sleep 10
     kill $pid
