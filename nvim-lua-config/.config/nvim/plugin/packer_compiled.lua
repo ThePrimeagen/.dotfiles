@@ -124,6 +124,11 @@ _G.packer_plugins = {
     path = "/home/mpaulson/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
     url = "https://github.com/glepnir/lspsaga.nvim"
   },
+  neoformat = {
+    loaded = true,
+    path = "/home/mpaulson/.local/share/nvim/site/pack/packer/start/neoformat",
+    url = "https://github.com/sbdchd/neoformat"
+  },
   neogit = {
     loaded = true,
     path = "/home/mpaulson/.local/share/nvim/site/pack/packer/start/neogit",

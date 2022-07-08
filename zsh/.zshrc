@@ -102,3 +102,14 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh_profile
 
 alias luamake=/home/mpaulson/personal/lua-language-server/3rd/luamake/luamake
+
+# bun completions
+[ -s "/home/mpaulson/.bun/_bun" ] && source "/home/mpaulson/.bun/_bun"
+
+# Bun
+export BUN_INSTALL="/home/mpaulson/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Bun
+export BUN_INSTALL="/home/mpaulson/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
