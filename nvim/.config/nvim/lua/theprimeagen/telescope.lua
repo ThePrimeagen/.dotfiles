@@ -56,12 +56,14 @@ M.search_dotfiles = function()
 end
 
 local function set_background(content)
-	vim.fn.system("dconf write /org/mate/desktop/background/picture-filename \"'" .. content .. "'\"")
+    print(content)
+	vim.fn.system("feh --bg-fill " .. content .. "'\"")
 end
 
 local function select_background(prompt_bufnr, map)
 	local function set_the_background(close)
 		local content = require("telescope.actions.state").get_selected_entry(prompt_bufnr)
+        print(vim.inspect(content))
 		set_background(content.cwd .. "/" .. content.value)
 		if close then
 			require("telescope.actions").close(prompt_bufnr)
@@ -84,6 +86,7 @@ local function image_selector(prompt, cwd)
 			cwd = cwd,
 
 			attach_mappings = function(prompt_bufnr, map)
+                print("help me ???")
 				select_background(prompt_bufnr, map)
 
 				-- Please continue mapping (attaching additional key maps):
