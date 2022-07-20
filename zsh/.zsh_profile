@@ -26,6 +26,7 @@ export N_PREFIX="$HOME/.local/n"
 export DOTFILES=$HOME/.dotfiles
 export BOGART=$HOME/work/bogart
 
+addToPathFront $HOME/.zig
 addToPathFront $HOME/.local/.npm-global/bin
 addToPathFront $HOME/.local/bin
 addToPathFront $HOME/.local/n/bin/

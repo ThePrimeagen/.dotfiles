@@ -41,11 +41,3 @@ function ColorMyPencils()
 end
 ColorMyPencils()
 
--- Vim with me
---[[
-nnoremap <leader>cmp :call ColorMyPencils()<CR>
-nnoremap <leader>vwb :let g:theprimeagen_colorscheme =
-]]
-
-
-

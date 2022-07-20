@@ -23,19 +23,13 @@ require("telescope").setup({
 		},
 	},
     --[[
-    -- Dear Conni
-    --
-    -- I have stayed awake thinking just yestereve about the fact that you
-    -- worked so hard to get fzf working with telescope and here i am not even
-    -- using native fzy.  I am a chump, you are awesome.  Sorry
-    --
 	extensions = {
 		fzy_native = {
 			override_generic_sorter = false,
 			override_file_sorter = true,
 		},
 	},
-    --]]
+    ]]
 })
 
 require("telescope").load_extension("git_worktree")
@@ -228,3 +222,5 @@ M.dev = function(opts)
 end
 
 return M
+
+

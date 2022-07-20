@@ -1,6 +1,6 @@
 local M = {}
 
-function bind(op, outer_opts)
+local function bind(op, outer_opts)
     outer_opts = outer_opts or {noremap = true}
     return function(lhs, rhs, opts)
         opts = vim.tbl_extend("force",
