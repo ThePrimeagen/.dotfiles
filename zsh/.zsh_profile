@@ -1,5 +1,7 @@
 export XDG_CONFIG_HOME=$HOME/.config
-VIM="nvim"
+VIM="nano"
+alias vi="nano"
+alias nvim="nano"
 
 PERSONAL=$XDG_CONFIG_HOME/personal
 source $PERSONAL/env
