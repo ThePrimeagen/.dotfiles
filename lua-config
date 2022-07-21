@@ -2,7 +2,7 @@
 
 rm -rf $XDG_CONFIG_HOME/nvim
 if [[ "$1" == "rc" ]]; then
-    stow vim-rc-2022
+    stow vim-2022
 elif [[ -z "$1" || "$1" == "lua" ]]; then
     stow nvim-lua-config
 else

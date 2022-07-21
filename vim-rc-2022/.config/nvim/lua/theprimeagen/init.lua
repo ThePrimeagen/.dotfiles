@@ -1,2 +1,0 @@
-print("hello from theprimeagen")
-
