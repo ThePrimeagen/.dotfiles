@@ -24,7 +24,6 @@ function M.InsertMeDaddy(interval, text)
     local pos = 1
 
     local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
-    print("setting text", text, "starting at row", row)
 
     i = set_interval(function()
         vim.schedule(function()
@@ -39,17 +38,14 @@ function M.InsertMeDaddy(interval, text)
             if char == "\n" then
                 row = row + 1
                 pos = pos + 1
-                print("adjusting line to", row)
                 return
             end
 
             local line = unpack(vim.api.nvim_buf_get_lines(0, row - 1, row, false))
 
-            print("got line", line, "putting char", char, "at", row)
             if not line or line == "" then
                 line = ""
             end
-            print("line finished", line)
 
             line = line .. char
             vim.api.nvim_buf_set_lines(0, row - 1, row, false, {line})
