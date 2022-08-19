@@ -1,2 +1,10 @@
 bin/.local/bin/solang
+bin/.local/bin/.env
+bin/.local/bin/calc-prorate
+bin/.local/bin/f2py3.10
+bin/.local/bin/pydle
+bin/.local/bin/pydle-irccat
+bin/.local/bin/twitch-chat
+bin/.local/bin/xr-stream
+
 
