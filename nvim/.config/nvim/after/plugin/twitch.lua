@@ -1,5 +1,3 @@
-vim.opt.rtp:append(os.getenv("HOME") .. "/personal/twitchy")
-
 local nnoremap = require("theprimeagen.keymap").nnoremap
 local Sources = require("twitchy.window.source")
 local tmux = require("twitchy.window.tmux")
@@ -16,7 +14,9 @@ local M = {
 function M.tmux(name)
 
     if not M.tmux_source and name then
-        tmux.create_window(name)
+        if not tmux.has_session(name) then
+            tmux.create_window(name)
+        end
         M.tmux_source = tmux.create_tail_source(name)
     end
 
@@ -55,6 +55,13 @@ end
 
 local silent = { silent = true }
 
+function get_tmux_source(name)
+    return M.tmux_source
+end
+function has_tmux_source(name)
+    return M.tmux_source ~= nil
+end
+
 function ready_tmux()
     if M.twitch_source then
         M.twitch_source:stop()
@@ -78,16 +85,19 @@ function ready_twitch()
 end
 
 nnoremap("<leader>tc", function()
-    print("testing")
     ready_twitch()
     local twitch = M.twitch()
     twitch:start()
 end, silent)
 
 nnoremap("<leader>ta", function()
-    ready_tmux()
+    ready_tmux("cargo_arduino")
 
-    local tmux = M.tmux("cargo_arduino")
+    local tmux = get_tmux_source("cargo_arduino")
+    if not has_tmux_source("cargo_arduino") then
+        tmux = M.tmux("cargo_arduino")
+    end
+
     tmux:start()
 end, silent)
 
@@ -96,5 +106,5 @@ nnoremap("<leader>tk", function()
 end, silent)
 
 nnoremap("<leader>tr", function()
-    cargo.cargo()
+    cargo.cargo("cargo_arduino")
 end, silent)
