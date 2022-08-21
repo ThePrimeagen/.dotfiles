@@ -1,3 +1,7 @@
+local window = require("twitchy.window")
+local tmux = require("twitchy.window.tmux")
+local tail = require("twitchy.window.tail")
+
 local Remap = require("theprimeagen.keymap")
 local nnoremap = Remap.nnoremap
 local vnoremap = Remap.vnoremap
@@ -44,3 +48,13 @@ nnoremap("<leader>j", "<cmd>lprev<CR>zz")
 
 nnoremap("<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 nnoremap("<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+nnoremap("<leader>tc", function()
+    tail.reset()
+    tmux.reset()
+end);
+
+nnoremap("<leader>ta", function()
+    tail.reset()
+    tmux.reset()
+end);

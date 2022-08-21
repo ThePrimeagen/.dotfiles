@@ -2,13 +2,16 @@ require("theprimeagen.set")
 require("theprimeagen.packer")
 require("theprimeagen.neogit")
 require("theprimeagen.debugger")
-require("theprimeagen.text-me-daddy")
 
 local augroup = vim.api.nvim_create_augroup
 ThePrimeagenGroup = augroup('ThePrimeagen', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
+
+function R(name)
+    require("plenary.reload").reload_module(name)
+end
 
 autocmd('TextYankPost', {
     group = yank_group,
