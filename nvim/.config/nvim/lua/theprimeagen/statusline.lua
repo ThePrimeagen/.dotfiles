@@ -52,14 +52,14 @@ M.set_write = function(count)
     PrimeWriteCount = count
 end
 
-local autocmd = vim.api.nvim_create_autocmd 
+local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
-local status_group = augroup('PrimeStatusLine', {}) 
+local status_group = augroup('PrimeStatusLine', {})
 
-autocmd('PrimeStatusLineCmd', { 
-    group = status_group, 
-    pattern = '*', 
-    callback = function() 
+autocmd('PrimeStatusLineCmd', {
+    group = status_group,
+    pattern = '*',
+    callback = function()
         M.on_write()
     end,
 })

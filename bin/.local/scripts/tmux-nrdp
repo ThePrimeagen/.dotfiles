@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+nrdp_commands() {
+
+    branch_name=$(basename $1)
+    nrdp="$NRDP/$branch_name"
+    build="$NRDP_BUILDS/$branch_name"
+
+    mkdir -p $build
+    cd $build
+
+    # configure the damn script
+    if [ "$2" != "just-build" ]; then
+        pushd $nrdp
+        git submodule update
+        popd
+
+        $nrdp/configure $(projector --pwd $nrdp configure)
+        rm $nrdp/compile_commands.json
+        cp compile_commands.json $nrdp
+    fi
+
+    # build netflix
+    $(projector build)
+
+    if [ "$2" != "just-build" ]; then
+        notify-send --icon=gtk-info "NRDP Build $branch_name" "has completed"
+    else
+        notify-send --icon=gtk-info "NRDP Build $branch_name" "has been configured and built"
+    fi
+}
+
+case "$1" in
+    "tmux")
+
+        session_name=$(tmux display-message -p '#S');
+        clean_arg=$(basename $2 | tr '/.' '__')
+        target="$session_name:$clean_arg"
+
+        if ! tmux has-session -t $target; then
+            tmux neww -dn $clean_arg
+        fi
+        tmux send-keys -t $target "tmux-nrdp $2 $3"
+        ;;
+    *)
+        nrdp_commands $1 $2
+        ;;
+esac
+

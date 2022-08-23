@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-xdotool type --delay 75 "cat /dev/ttyACM3"
-

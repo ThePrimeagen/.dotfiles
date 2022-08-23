@@ -21,6 +21,12 @@ nnoremap("N", "Nzzzv")
 nnoremap("J", "mzJ`z")
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
+nnoremap("<leader>vwm", function()
+    require("vim-with-me").StartVimWithMe()
+end)
+nnoremap("<leader>svwm", function()
+    require("vim-with-me").StopVimWithMe()
+end)
 
 -- greatest remap ever
 xnoremap("<leader>p", "\"_dP")

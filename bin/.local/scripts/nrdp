@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -x
+build_name=$(basename $(pwd))
+nrdp_path=$HOME/work/nrdp/$build_name
+build_path=$HOME/work/builds/$build_name
+thread_count=$(projector thread_count || echo 50)
+
+if [[ $1 == "configure" ]]; then
+    $nrdp_path/configure $(projector configure)
+    cp $build_path/compile_commands.json $nrdp_path
+elif [[ $1 == "pvm-add" ]]; then
+    pvm build add $nrdp_path -name $2 -- $(projector configure)
+elif [[ $1 == "build" ]]; then
+    ninja -C $build_path -j $thread_count
+fi

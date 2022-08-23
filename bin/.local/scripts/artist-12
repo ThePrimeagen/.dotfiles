@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+scale=$1 || "1.5x1.5"
+set -x
+xrandr --output DP-0 --size 1920x1080 --pos 0x0 --scale $scale
+set +x
+
