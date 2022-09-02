@@ -40,6 +40,9 @@ inoremap("<C-c>", "<Esc>")
 
 nnoremap("Q", "<nop>")
 nnoremap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+nnoremap("<leader>f", function()
+    vim.lsp.buf.format()
+end)
 
 nnoremap("<C-k>", "<cmd>cnext<CR>zz")
 nnoremap("<C-j>", "<cmd>cprev<CR>zz")

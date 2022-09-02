@@ -1,4 +1,6 @@
-local nnoremap = require("theprimeagen.keymap").nnoremap
+local keymaps = require("theprimeagen.keymap")
+local nnoremap = keymaps.nnoremap
+local vnoremap = keymaps.vnoremap
 local Sources = require("twitchy.window.source")
 local tmux = require("twitchy.window.tmux")
 local window = require("twitchy.window")
@@ -8,145 +10,146 @@ local tail = require("twitchy.window.tail")
 local M = {
     window = false,
     twitch_source = nil,
-    tmux_source = nil,
+    window_source = Sources.create_window_source()
 }
 
-M.window_source = Sources.AccumulatorSource:new()
-M.window_source:and_then(Sources.create_window_source())
-M.window_source:stop()
+local last_open_cat_tail
+local last_known_dev_tty
+local last_open_cargo_source
 
 function cat_tail(path)
-    if last_open_cargo_source then
-        last_open_cargo_source:close()
+    if last_open_cat_tail then
+        last_open_cat_tail:close()
     end
 
-    last_open_cargo_source = tail.cat_tail(path)
-    last_open_cargo_source:and_then(
-        Sources.AccumulatorSource:new()):and_then(
-        Sources.create_window_source())
-end
-
-function M.tmux(name)
-    if not M.tmux_source and name then
-        if not tmux.has_session(name) then
-            tmux.create_window(name)
-        end
-        M.tmux_source = tmux.create_tail_source(name)
-        M.tmux_source:stop()
-
-        to_barrier(M.tmux_source):and_then(M.window_source)
-    end
-
-    return M.tmux_source
+    last_open_cat_tail = tail.cat_tail(path)
+    last_open_cat_tail:and_then(M.window_source)
+    last_known_dev_tty = path
 end
 
 function M.twitch()
+
     if not M.twitch_source then
         M.twitch_source = tail.twitch("/tmp/twitch")
         M.twitch_source:stop()
-        to_barrier(M.twitch_source):and_then(M.window_source)
+        M.twitch_source:and_then(M.window_source)
     end
 
     return M.twitch_source
 end
 
+function redisplay_twitch()
+    local twitch = M.twitch()
+
+    -- forces twitch to rehydrate
+    twitch:stop()
+    twitch:start()
+    twitch:replay()
+
+    window.open()
+end
+
+function stop_cargo_and_tail()
+    if last_open_cat_tail then
+        last_open_cat_tail.on = false -- hack
+    end
+    if last_open_cargo_source then
+        last_open_cargo_source:stop()
+    end
+end
+
 function M.hide_all()
     M.twitch_source:stop()
-    M.tmux_source:stop()
 end
 
 function M.reset()
     if M.twitch_source then
-        M.twitch_source:stop()
+        M.twitch_source:close()
     end
-    if M.tmux_source then
-        M.tmux_source:stop()
+    if last_open_cat_tail then
+        last_open_cat_tail:close()
+    end
+    if last_open_cargo_source then
+        last_open_cargo_source:close()
     end
 
     M.twitch_source = nil
-    M.tmux_source = nil
+    last_open_cat_tail = nil
+    last_open_cargo_source = nil
+    last_known_dev_tty = nil
 end
 
 local silent = { silent = true }
 
-function get_tmux_source(name)
-    return M.tmux_source
-end
-
-function has_tmux_source(name)
-    return M.tmux_source ~= nil
+function close_cargo_and_tail()
+    if last_open_cat_tail then
+        print("closing last cat tail")
+        last_open_cat_tail:close()
+        last_open_cat_tail = nil
+    end
+    if last_open_cargo_source then
+        print("closing last cargo source")
+        last_open_cargo_source:close()
+        last_open_cargo_source = nil
+    end
 end
 
 function ready_window_source()
     if M.twitch_source then
         M.twitch_source:stop()
     end
-    if M.tmux_source then
-        M.tmux_source:stop()
-    end
 
     M.window_source:start()
-end
-
-function ready_tmux()
-    if M.twitch_source then
-        M.twitch_source:stop()
-    end
-
-    if not M.window then
-        M.window = true
-        window.open()
-    end
-end
-
-function ready_twitch()
-    if M.tmux_source then
-        M.tmux_source:stop()
-    end
-
-    if not M.window then
-        M.window = true
-        window.open()
-    end
+    window.open()
 end
 
 nnoremap("<leader>tt", function()
-    window.open()
+    if not is_open then
+        return
+    end
+
+    if not last_open_cat_tail then
+        redisplay_twitch()
+    elseif not last_open_cat_tail.on then
+        local twitch = M.twitch()
+        twitch:stop()
+        last_open_cat_tail:start()
+    else
+        local twitch = M.twitch()
+        last_open_cat_tail:stop()
+        redisplay_twitch()
+    end
 end, silent)
 
 nnoremap("<leader>tc", function()
-    ready_twitch()
-    local twitch = M.twitch()
-    twitch:start()
+    stop_cargo_and_tail()
+    redisplay_twitch()
 end, silent)
 
-local last_open_cargo_source
 nnoremap("<leader>ta", function()
-    if last_open_cargo_source then
-        last_open_cargo_source:close()
-    end
-
+    close_cargo_and_tail()
     ready_window_source()
+    M.twitch():stop()
 
     if not tmux.has_session("cargo_arduino") then
         tmux.create_window("cargo_arduino")
     end
 
-    window.open()
-    M.window_source:start()
-
     tmux.send_kill("cargo_arduino")
-
     vim.defer_fn(function()
         tmux.send_clear("cargo_arduino")
         vim.defer_fn(function()
 
             last_open_cargo_source = cargo.arduino("cargo_arduino")
+
             last_open_cargo_source:and_then(
-                Sources.create_window_source()
-            ):on_close(function(last_msg)
-                last_open_cargo_source = nil
-                tmux.send_kill("cargo_arduino")
+                Sources.AccumulatorSource:new()):and_then(M.window_source)
+
+            print("awaiting for close")
+            last_open_cargo_source:on_close(function(last_msg)
+                print("close called")
+                -- TODO: these are left open despite killing cargo run job
+                tail.kill("ravedude")
                 vim.defer_fn(function()
                     cat_tail(last_msg)
                 end, 100)
@@ -155,22 +158,21 @@ nnoremap("<leader>ta", function()
     end, 100)
 end, silent)
 
-nnoremap("<leader>twa", function()
-    ready_window_source()
-    window.close()
-end)
-
 nnoremap("<leader>tk", function()
-    tmux.send_kill("cargo_arduino")
+    M.reset()
 end, silent)
 
-nnoremap("<leader>tr", function()
-    -- TODO: Cargo run?
+nnoremap("<leader>ts", function()
+    M.twitch():stop()
+    if last_open_cat_tail then
+        last_open_cat_tail:start()
+    end
 end, silent)
 
 nnoremap("<leader>twv", function()
     ready_window_source()
     M.window_source:start()
+    window.reset()
     window.open()
 end, silent)
 
@@ -178,4 +180,16 @@ nnoremap("<leader>twm", function()
     ready_window_source()
     M.window_source:stop()
     window.close()
+end, silent)
+
+nnoremap("<leader>te", function()
+    if last_known_dev_tty then
+        tail.append(last_known_dev_tty)
+    end
+end, silent)
+
+vnoremap("<leader>te", function()
+    if last_known_dev_tty then
+        tail.append(last_known_dev_tty)
+    end
 end, silent)

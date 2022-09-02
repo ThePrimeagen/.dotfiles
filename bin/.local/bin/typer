@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-xdotool type --delay 250 "It must of been very hard recognizing that your primary problem was that you were not using rust"
+xdotool type --delay 75 "cat /dev/ttyACM3"
 
