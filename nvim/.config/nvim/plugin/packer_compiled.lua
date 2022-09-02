@@ -109,6 +109,21 @@ _G.packer_plugins = {
     path = "/home/mpaulson/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
+  ["iron.nvim"] = {
+    loaded = true,
+    path = "/home/mpaulson/.local/share/nvim/site/pack/packer/start/iron.nvim",
+    url = "https://github.com/hkupty/iron.nvim"
+  },
+  ["jupyter_ascending.vim"] = {
+    loaded = true,
+    path = "/home/mpaulson/.local/share/nvim/site/pack/packer/start/jupyter_ascending.vim",
+    url = "https://github.com/untitled-ai/jupyter_ascending.vim"
+  },
+  ["jupytext.vim"] = {
+    loaded = true,
+    path = "/home/mpaulson/.local/share/nvim/site/pack/packer/start/jupytext.vim",
+    url = "https://github.com/GCBallesteros/jupytext.vim"
+  },
   ["lsp_extensions.nvim"] = {
     loaded = true,
     path = "/home/mpaulson/.local/share/nvim/site/pack/packer/start/lsp_extensions.nvim",
@@ -158,6 +173,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mpaulson/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
     url = "https://github.com/theHamsta/nvim-dap-virtual-text"
+  },
+  ["nvim-ipy"] = {
+    loaded = true,
+    path = "/home/mpaulson/.local/share/nvim/site/pack/packer/start/nvim-ipy",
+    url = "https://github.com/bfredl/nvim-ipy"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -218,6 +238,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mpaulson/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
+  },
+  ["vim-textobj-hydrogen"] = {
+    loaded = true,
+    path = "/home/mpaulson/.local/share/nvim/site/pack/packer/start/vim-textobj-hydrogen",
+    url = "https://github.com/GCBallesteros/vim-textobj-hydrogen"
   }
 }
 
