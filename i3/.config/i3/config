@@ -15,7 +15,7 @@ set $mod Mod1
 # is used in the bar {} block below.
 font pango:monospace 15px
 
-# GET DEM BORDERS OUT OF HEREc:w
+# GET DEM BORDERS OUT OF HERE
 #
 # Thanks Childz
 for_window [class="^.*"] border pixel 2
