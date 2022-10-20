@@ -1,6 +1,5 @@
 return require("packer").startup(function()
     use("wbthomason/packer.nvim")
-    use("sbdchd/neoformat")
 
     -- Simple plugins can be specified as strings
     use("TimUntersberger/neogit")
@@ -28,22 +27,18 @@ return require("packer").startup(function()
     use("L3MON4D3/LuaSnip")
     use("saadparwaiz1/cmp_luasnip")
 
-    -- Testing out jupyter ascending
-    use('untitled-ai/jupyter_ascending.vim')
-    use('bfredl/nvim-ipy')
-    use('hkupty/iron.nvim')
-    use('GCBallesteros/jupytext.vim')
-    use('GCBallesteros/vim-textobj-hydrogen')
-
     -- Primeagen doesn"t create lodash
     use("ThePrimeagen/git-worktree.nvim")
     use("ThePrimeagen/harpoon")
+    use("ThePrimeagen/refactoring.nvim")
 
     use("mbbill/undotree")
 
     -- Colorscheme section
     use("gruvbox-community/gruvbox")
     use("folke/tokyonight.nvim")
+    use({"catppuccin/nvim", as = "catppuccin" })
+    use({ 'rose-pine/neovim', as = 'rose-pine' })
 
     use("nvim-treesitter/nvim-treesitter", {
         run = ":TSUpdate"
