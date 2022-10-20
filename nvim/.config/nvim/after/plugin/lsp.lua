@@ -5,9 +5,6 @@ local inoremap = Remap.inoremap
 local sumneko_root_path = "/home/mpaulson/personal/sumneko"
 local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 local source_mapping = {
@@ -88,7 +85,6 @@ tabnine:setup({
 
 local function config(_config)
 	return vim.tbl_deep_extend("force", {
-		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 		on_attach = function()
 			nnoremap("gd", function() vim.lsp.buf.definition() end)
 			nnoremap("K", function() vim.lsp.buf.hover() end)
