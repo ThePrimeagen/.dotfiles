@@ -1,4 +1,4 @@
-return require("packer").startup(function()
+return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
     -- Simple plugins can be specified as strings
@@ -28,6 +28,7 @@ return require("packer").startup(function()
     use("saadparwaiz1/cmp_luasnip")
 
     -- Primeagen doesn"t create lodash
+    use("ThePrimeagen/refactoring.nvim")
     use("ThePrimeagen/git-worktree.nvim")
     use("ThePrimeagen/harpoon")
     use("ThePrimeagen/refactoring.nvim")
