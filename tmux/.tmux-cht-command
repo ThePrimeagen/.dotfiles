@@ -4,7 +4,6 @@ tldr
 sed
 awk
 tr
-cp
 ls
 grep
 xargs
