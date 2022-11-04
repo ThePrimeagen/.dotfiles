@@ -111,70 +111,78 @@ local function config(_config)
 	}, _config or {})
 end
 
-require("lspconfig").zls.setup(config())
+local lspconfig = require('lspconfig')
 
-require("lspconfig").tsserver.setup(config())
+local langservers = {
+    'zls',
+    'tsserver',
+    'ccls',
+    'jedi_language_server',
+    'svelte',
+    'solang',
+    'cssls',
+    'gopls',
+    'rust_analyzer',
+    'sumneko_lua'
+}
 
-require("lspconfig").ccls.setup(config())
-
-require("lspconfig").jedi_language_server.setup(config())
-
-require("lspconfig").svelte.setup(config())
-
-require("lspconfig").solang.setup(config())
-
-require("lspconfig").cssls.setup(config())
-
-require("lspconfig").gopls.setup(config({
-	cmd = { "gopls", "serve" },
-	settings = {
-		gopls = {
-			analyses = {
-				unusedparams = true,
-			},
-			staticcheck = true,
-		},
-	},
-}))
-
--- who even uses this?
-require("lspconfig").rust_analyzer.setup(config({
-	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
-	--[[
-    settings = {
-        rust = {
-            unstable_features = true,
-            build_on_save = false,
-            all_features = true,
-        },
-    }
-    --]]
-}))
-
-require("lspconfig").sumneko_lua.setup(config({
-	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
-	settings = {
-		Lua = {
-			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-				version = "LuaJIT",
-				-- Setup your lua path
-				path = vim.split(package.path, ";"),
-			},
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { "vim" },
-			},
-			workspace = {
-				-- Make the server aware of Neovim runtime files
-				library = {
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-				},
-			},
-		},
-	},
-}))
+for _, server in ipairs(langservers) do
+    if server == 'gopls' then
+        lspconfig[server].setup {
+            cmd = { "gopls", "serve" },
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                    },
+                    staticcheck = true,
+                },
+            },
+        }
+    elseif server == 'rust_analyzer' then
+        lspconfig[server].setup {
+            cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+            --[[
+            settings = {
+                rust = {
+                    unstable_features = true,
+                    build_on_save = false,
+                    all_features = true,
+                },
+            }
+            --]]
+        }
+    elseif server == 'sumneko_lua' then
+        lspconfig[server].config {
+            cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+            settings = {
+                Lua = {
+                    runtime = {
+                        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                        version = "LuaJIT",
+                        -- Setup your lua path
+                        path = vim.split(package.path, ";"),
+                    },
+                    diagnostics = {
+                        -- Get the language server to recognize the `vim` global
+                        globals = { "vim" },
+                    },
+                    workspace = {
+                        -- Make the server aware of Neovim runtime files
+                        library = {
+                            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                            [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+                        },
+                    },
+                },
+            },
+        }
+    else
+        lspconfig[server].config {
+            config()
+        }
+    end
+end
 
 local opts = {
 	-- whether to highlight the currently hovered symbol
