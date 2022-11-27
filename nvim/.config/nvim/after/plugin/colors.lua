@@ -1,4 +1,4 @@
-vim.g.theprimeagen_colorscheme = "rose-pine"
+vim.g.theprimeagen_colorscheme = "tokyonight"
 
 require("catppuccin").setup({
 	transparent_background = false,

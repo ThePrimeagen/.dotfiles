@@ -2,7 +2,7 @@ return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
     -- Simple plugins can be specified as strings
-    use("TimUntersberger/neogit")
+    use("tpope/vim-fugitive")
 
     -- TJ created lodash of neovim
     use("nvim-lua/plenary.nvim")
@@ -13,6 +13,18 @@ return require("packer").startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     })
+
+    -- trying copilot for 1 week
+    -- use("github/copilot.vim")
+    use("github/copilot.vim")
+    use("zbirenbaum/copilot.lua");
+    use({
+        "zbirenbaum/copilot-cmp",
+        after = { "copilot.lua" },
+        config = function ()
+            require("copilot_cmp").setup()
+        end
+    });
 
     -- All the things
     use("neovim/nvim-lspconfig")
@@ -28,7 +40,6 @@ return require("packer").startup(function(use)
     use("saadparwaiz1/cmp_luasnip")
 
     -- Primeagen doesn"t create lodash
-    use("ThePrimeagen/refactoring.nvim")
     use("ThePrimeagen/git-worktree.nvim")
     use("ThePrimeagen/harpoon")
     use("ThePrimeagen/refactoring.nvim")
