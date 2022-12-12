@@ -4,7 +4,7 @@
 # - fuzzy finder: either fzf or sk
 # - bat: as cat replacement - is being used as pager inside nvim terminal
 
-fuzzy_finder=sk  # use either fzf or sk
+fuzzy_finder=fzf  # use either fzf or sk
 
 nvim_options="\
     -c \"nnoremap i :echo 'i disabled!'<CR>\" \
