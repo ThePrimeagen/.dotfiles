@@ -34,6 +34,7 @@ addToPathFront $HOME/.local/n/bin/
 addToPathFront $HOME/.local/go/bin
 addToPathFront $HOME/go/bin
 addToPathFront $HOME/personal/sumneko/bin
+addToPathFront $HOME/.deno/bin
 
 # Where should I put you?
 bindkey -s ^f "tmux-sessionizer\n"
