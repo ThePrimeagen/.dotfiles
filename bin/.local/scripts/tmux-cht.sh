@@ -6,17 +6,16 @@
 
 fuzzy_finder=fzf  # use either fzf or sk
 
+# Pressing <esc> exits terminal mode and moves cursor to the middle of the screen
+# Pressing q quits nvim inside normal and terminal mode
 nvim_options="\
-    -c \"nnoremap i :echo 'i disabled!'<CR>\" \
-    -c \"nnoremap I :echo 'I disabled!'<CR>\" \
-    -c \"nnoremap a :echo 'a disabled!'<CR>\" \
-    -c \"nnoremap A :echo 'A disabled!'<CR>\" \
-    -c \"nnoremap p :echo 'p disabled!'<CR>\" \
-    -c \"nnoremap P :echo 'P disabled!'<CR>\" \
-    -c \"nnoremap q :q!<CR>\""
+    -c \"nnoremap q :q!<CR>\" \
+    -c \"tnoremap <esc> :<C-\\><C-n>M\" \
+    -c \"tnoremap q :<C-\\><C-n>:q!<CR>\""
 
 # Using bat inside the terminal results in line wraps to dynamically adjust
 # when changing the windown size
+#bat_options=""
 bat_options="\
     --paging=always \
     --style=plain"
@@ -37,4 +36,5 @@ else
 fi
 
 tmux neww -n "$url" bash -c "nvim $nvim_options \
-    +'ter curl --no-progress-meter $url | bat $bat_options'"
+    +'ter curl --no-progress-meter $url | bat $bat_options'"  # +'call feedkeys(\"i\")'"
+
