@@ -2,7 +2,6 @@
 
 # Prerequisites:
 # - fuzzy finder: either fzf or sk
-# - bat: as cat replacement - is being used as pager inside nvim terminal
 
 fuzzy_finder=fzf  # use either fzf or sk
 
@@ -11,16 +10,15 @@ fuzzy_finder=fzf  # use either fzf or sk
 nvim_options="\
     -c \"nnoremap q :q!<CR>\" \
     -c \"tnoremap <esc> :<C-\\><C-n>M\" \
-    -c \"tnoremap q :<C-\\><C-n>:q!<CR>\""
+    -c \"tnoremap q :<C-\\><C-n>:q!<CR>\" \
+    "
 
-# Using bat inside the terminal results in line wraps to dynamically adjust
-# when changing the windown size
-#bat_options=""
-bat_options="\
-    --paging=always \
-    --style=plain"
+less_options="-R"
 
-selected=$(cat ~/.config/tmux/.tmux-cht-languages ~/.config/tmux/.tmux-cht-command | $fuzzy_finder)
+selected=$(cat \
+    ~/.config/tmux/.tmux-cht-languages \
+    ~/.config/tmux/.tmux-cht-command | \
+    $fuzzy_finder)
 
 if [[ -z $selected ]]; then
     exit 0
@@ -36,5 +34,4 @@ else
 fi
 
 tmux neww -n "$url" bash -c "nvim $nvim_options \
-    +'ter curl --no-progress-meter $url | bat $bat_options'"  # +'call feedkeys(\"i\")'"
-
+    +'ter curl --no-progress-meter $url | less $less_options'"  # +'call feedkeys(\"i\")'"
