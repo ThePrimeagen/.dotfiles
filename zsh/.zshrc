@@ -109,7 +109,3 @@ alias luamake=/home/mpaulson/personal/lua-language-server/3rd/luamake/luamake
 # Bun
 export BUN_INSTALL="/home/mpaulson/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Bun
-export BUN_INSTALL="/home/mpaulson/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
