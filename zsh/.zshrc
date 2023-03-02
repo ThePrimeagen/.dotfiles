@@ -113,3 +113,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Bun
 export BUN_INSTALL="/home/mpaulson/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/mpaulson/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end

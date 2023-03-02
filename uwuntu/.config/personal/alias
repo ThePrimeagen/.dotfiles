@@ -35,6 +35,5 @@ alias echotime="~/dotfiles/apps/echo_time"
 alias livestream_screenkey="screenkey -s large --scr 2 -p bottom --geometry 1210x300+712+810";
 alias yt_screenkey="screenkey -s large --scr 1 -p bottom --geometry 510x300+1412+850";
 
-alias cnpm="cat ~/.npmrc"
-alias pnpm='rm ~/.npmrc'
+alias mynpm='rm ~/.npmrc'
 
