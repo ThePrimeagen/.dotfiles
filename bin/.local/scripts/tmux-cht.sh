@@ -1,15 +1,23 @@
 #!/usr/bin/env bash
-selected=`cat ~/.tmux-cht-languages ~/.tmux-cht-command | fzf`
+
+PAGER="less -r"
+selected=$(cat ~/.tmux-cht-languages ~/.tmux-cht-command | fzf)
+
 if [[ -z $selected ]]; then
     exit 0
 fi
 
-read -p "Enter Query: " query
+# -e Let you use arrow keys to correct query
+# -r Prevent \ to escape charecters
+read -rep "Enter Query: " query
 
 if grep -qs "$selected" ~/.tmux-cht-languages; then
-    query=`echo $query | tr ' ' '+'`
-    tmux neww bash -c "echo \"curl cht.sh/$selected/$query/\" & curl cht.sh/$selected/$query & while [ : ]; do sleep 1; done"
+    curl -s "cht.sh/$selected/${query//\ /\+}" | $PAGER
 else
-    tmux neww bash -c "curl -s cht.sh/$selected~$query | less"
+    # Allow empty query search
+    if [[ -n $query ]]; then
+        curl -s "cht.sh/$selected~$query" | $PAGER
+    else
+        curl -s "cht.sh/$selected" | $PAGER
+    fi
 fi
-
