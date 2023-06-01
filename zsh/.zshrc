@@ -136,3 +136,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# add russian language
+setxkbmap -option grp:alt_shift_toggle us,ru
+

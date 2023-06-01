@@ -234,3 +234,12 @@ bindsym $mod+m move workspace to output left
 # Suspend
 bindsym $mod+Shift+period exec systemctl suspend
 
+
+
+# roach changes
+exec --no-startup-id i3-msg "workspace 3; exec i3-sensible-terminal"
+exec --no-startup-id i3-msg "workspace 2; exec firefox; workspace 1"
+
+# dump shortcuts
+#bindsym $mod+x workspace 3; exec --no-startup-id "i3-sensible-terminal; workspace 1"
+#bindsym $mod+p workspace 2; exec firefox; workspace 1;

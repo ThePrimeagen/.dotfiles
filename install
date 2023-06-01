@@ -11,6 +11,5 @@ done
 popd
 
 pushd ./netflix
-./stow
 popd
 
