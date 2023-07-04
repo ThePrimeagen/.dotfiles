@@ -139,9 +139,15 @@ unset __conda_setup
 
 # roach changes
 
+# use vim on terminal
+bindkey -v
+
 # add russian language
 setxkbmap -option grp:lwin_toggle  us,ru
 
 # alias for openwrt docker
 alias openwrt="docker run -v ~/mybuild:/home/user -it openwrt_builder /bin/bash"
 
+# minicom
+MINICOM='-con' # colors on
+export MINICOM
