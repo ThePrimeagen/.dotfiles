@@ -139,6 +139,10 @@ unset __conda_setup
 
 # roach changes
 
+# custom utils
+export PATH="$PATH:~/.local/bin"
+source ~/.local/bin/wd.sh
+
 # use vim on terminal
 bindkey -v
 
