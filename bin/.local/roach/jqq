@@ -1,0 +1,15 @@
+#!/bin/bash
+
+TMP_FILE=/tmp/roach/jqq_tmp
+
+# init
+if [ ! -d /tmp/roach ]; then
+  mkdir /tmp/roach
+fi
+
+if [ -n "$1" ]; then
+  cat $1 | jq > $TMP_FILE && mv $TMP_FILE $1
+else
+  echo "error: missing input"
+  jq
+fi

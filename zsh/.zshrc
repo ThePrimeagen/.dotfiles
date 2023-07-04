@@ -140,7 +140,7 @@ unset __conda_setup
 # roach changes
 
 # add russian language
-setxkbmap -option grp:alt_shift_toggle us,ru
+setxkbmap -option grp:lwin_toggle  us,ru
 
 # alias for openwrt docker
 alias openwrt="docker run -v ~/mybuild:/home/user -it openwrt_builder /bin/bash"

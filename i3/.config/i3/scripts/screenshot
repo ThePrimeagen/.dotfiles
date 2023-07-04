@@ -1,0 +1,3 @@
+#!/bin/sh
+
+scrot -e "mv 2023* ~/roach/pics/screenshots"

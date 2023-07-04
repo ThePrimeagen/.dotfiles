@@ -1,0 +1,8 @@
+#!/bin/sh
+
+
+if [[ "$1" == "up" ]]; then
+  amixer set Master 5%+ > /dev/null
+elif [[ "$1" == "down" ]]; then
+  amixer set Master 5%- > /dev/null
+fi
