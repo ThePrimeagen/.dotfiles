@@ -70,7 +70,10 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  vi-mode
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -144,7 +147,7 @@ export PATH="$PATH:~/.local/bin"
 source ~/.local/bin/wd.sh
 
 # use vim on terminal
-bindkey -v
+#bindkey -v
 
 # add russian language
 setxkbmap -option grp:lwin_toggle  us,ru
