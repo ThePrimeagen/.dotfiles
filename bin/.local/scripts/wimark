@@ -1,0 +1,66 @@
+#!/bin/sh
+
+# device setup - when it runs on ramfs
+# update code my laptop to device
+# run frequently used commands from laptop using ssh
+
+PASSWORD=""
+
+function usage()
+{
+  cat << EOF
+Usage: wimark cmd
+Commans:
+  hub    send ssh keys to device
+  dev    generate ssh keys for decice
+  clean  delete generated keys
+EOF
+}
+
+device_setup_ssh_key_laptop()
+{
+  # link: laptop -> device
+  echo "set up laptop"
+  ssh-keygen -t rsa -f ~/.ssh/dev -q -N ""
+  sshpass -p "$PASSWORD" ssh-copy-id -p 51954 -i ~/.ssh/dev.pub dev
+}
+
+device_setup_ssh_keygen_device()
+{
+  # link: device -> laptop
+  echo "set up device"
+  # FIXME: suppress stderr
+  dropbearkey -s 2048 -t rsa -f ~/.ssh/hub | grep ssh > ~/.ssh/hub.pub
+  sshpass -p "$PASSWORD" ssh dev "mkdir -p /root/.ssh"
+  sshpass -p "$PASSWORD" ssh dev "tee /root/.ssh/hub" < ~/.ssh/hub > /dev/null
+  sshpass -p "$PASSWORD" ssh dev "tee -a /root/.ssh/known_hosts" < ~/.ssh/hub.pub
+  cat ~/.ssh/hub.pub >> ~/.ssh/authorized_keys
+}
+
+device_setup_shell_device()
+{
+  ssh dev "tee -a /etc/profile" < ~/.local/bin/profile
+}
+
+device_setup_ssh_keygen_device_clean()
+{
+  rm -rf ~/.ssh/dev*
+  rm -rf ~/.ssh/hub*
+  rm -rf ~/.ssh/known_hosts*
+  rm -rf ~/.ssh/authorized_keys*
+}
+
+if [ "$1" == "hub" ]; then
+  rm -rf ~/.ssh/dev*
+  device_setup_ssh_key_laptop
+elif [ "$1" == "dev" ]; then
+  rm -rf ~/.ssh/hub*
+  device_setup_ssh_keygen_device
+elif [ "$1" == "clean" ]; then
+  device_setup_ssh_keygen_device_clean
+elif [ "$1" == "profile" ]; then
+  device_setup_shell_device
+else
+  usage
+  exit 1
+fi
