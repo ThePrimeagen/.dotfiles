@@ -150,7 +150,9 @@ source ~/.local/bin/wd.sh
 #bindkey -v
 
 # add russian language
-setxkbmap -option grp:lwin_toggle  us,ru
+# setxkbmap -layout us,ru -option grp:lwin_toggle
+dvorak
+
 
 # alias for openwrt docker
 alias openwrt="docker run -v ~/mybuild:/home/user -it openwrt_builder /bin/bash"
@@ -158,3 +160,8 @@ alias openwrt="docker run -v ~/mybuild:/home/user -it openwrt_builder /bin/bash"
 # minicom
 MINICOM='-con' # colors on
 export MINICOM
+
+# fix: tmux changes set colors in vim
+alias tmux="TERM=screen-256color-bce tmux"
+
+
