@@ -148,6 +148,9 @@ source ~/.local/bin/wd.sh
 
 # use vim on terminal
 #bindkey -v
+bindkey -v
+bindkey "jj" self-insert-command
+bindkey -s "jk" "^["
 
 # add russian language
 # setxkbmap -layout us,ru -option grp:lwin_toggle
@@ -155,7 +158,7 @@ dvorak
 
 
 # alias for openwrt docker
-alias openwrt="docker run -v ~/mybuild:/home/user -it openwrt_builder /bin/bash"
+alias openwrt="docker run -v ~/work/docker_openwrt/:/root -it wimark-docker-firmware-builder"
 
 # minicom
 MINICOM='-con' # colors on
@@ -164,4 +167,11 @@ export MINICOM
 # fix: tmux changes set colors in vim
 alias tmux="TERM=screen-256color-bce tmux"
 
+# set default compiler
+CC=gcc
+
+# luarocks
+export PATH="$PATH:/home/roach/.luarocks/bin"
+
+[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 
