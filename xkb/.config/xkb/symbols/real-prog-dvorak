@@ -17,9 +17,9 @@ xkb_symbols "real-prog-dvorak" {
     key <AE11> { [ exclam,      percent ]       };
     key <AE12> { [ bar, grave,  dead_tilde] };
 
-    key <AD01> { [  semicolon,  colon, dead_acute, dead_diaeresis       ] };
-    key <AD02> { [      comma,  less,   dead_cedilla, dead_caron        ] };
-    key <AD03> { [      period, greater, dead_abovedot, periodcentered  ] };
+    key <AD01> { [   apostrophe,        quotedbl, dead_ogonek, dead_doubleacute ] };
+    key <AD02> { [          j,  J               ]       };
+    key <AD03> { [          k,  K               ]       };
     key <AD04> { [          p,  P               ]       };
     key <AD05> { [          y,  Y               ]       };
     key <AD06> { [          f,  F               ]       };
@@ -42,16 +42,16 @@ xkb_symbols "real-prog-dvorak" {
     key <AC10> { [          s,  S               ]       };
     key <AC11> { [      minus,  underscore      ]       };
 
-    key <AB01> { [   apostrophe,        quotedbl, dead_ogonek, dead_doubleacute ] };
+    key <AB01> { [          z,  Z               ]       };
     key <AB02> { [          q,  Q               ]       };
-    key <AB03> { [          j,  J               ]       };
-    key <AB04> { [          k,  K               ]       };
+    key <AB03> { [      comma,  less,   dead_cedilla, dead_caron        ] };
+    key <AB04> { [      period, greater, dead_abovedot, periodcentered  ] };
     key <AB05> { [          x,  X               ]       };
     key <AB06> { [          b,  B               ]       };
     key <AB07> { [          m,  M               ]       };
     key <AB08> { [          w,  W               ]       };
     key <AB09> { [          v,  V               ]       };
-    key <AB10> { [          z,  Z               ]       };
+    key <AB10> { [  semicolon,  colon, dead_acute, dead_diaeresis       ] };
 
     key <BKSL> { [  backslash,  numbersign             ]       };
 };
