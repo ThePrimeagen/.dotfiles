@@ -1,9 +1,3 @@
-[submodule "netflix"]
-	path = netflix
-	url = git@github.com:ThePrimeagen/.dotfiles-netflix.git
-[submodule "personal"]
-	path = personal
-	url = git@github.com:ThePrimeagen/.dotfiles-personal.git
 [submodule "tree-sitter/.config/tree-sitter/tree-sitter-lua"]
 	path = tree-sitter/.config/tree-sitter/tree-sitter-lua
 	url = git@github.com:Azganoth/tree-sitter-lua.git
