@@ -4,12 +4,12 @@ xkb_symbols "real-prog-dvorak" {
 
     key <TLDE> { [       dollar,        asciitilde, dead_grave, dead_tilde      ] };
 
-    key <AE01> { [          plus,       1               ]       };
+    key <AE01> { [          equal,       1               ]       };
     key <AE02> { [          bracketleft,        2               ]       };
     key <AE03> { [          braceleft,  3       ]       };
     key <AE04> { [          parenleft,  4               ]       };
     key <AE05> { [          ampersand,      5               ]       };
-    key <AE06> { [          equal,  6, dead_circumflex, dead_circumflex ]   };
+    key <AE06> { [          plus,  6, dead_circumflex, dead_circumflex ]   };
     key <AE07> { [          parenright, 7       ]       };
     key <AE08> { [          braceright, 8       ]       };
     key <AE09> { [          bracketright,       9,  dead_grave] };
@@ -40,7 +40,7 @@ xkb_symbols "real-prog-dvorak" {
     key <AC08> { [          t,  T               ]       };
     key <AC09> { [          n,  N               ]       };
     key <AC10> { [          s,  S               ]       };
-    key <AC11> { [      minus,  underscore      ]       };
+    key <AC11> { [  semicolon,  underscore, dead_acute, dead_diaeresis       ] };
 
     key <AB01> { [          z,  Z               ]       };
     key <AB02> { [          q,  Q               ]       };
@@ -51,7 +51,7 @@ xkb_symbols "real-prog-dvorak" {
     key <AB07> { [          m,  M               ]       };
     key <AB08> { [          w,  W               ]       };
     key <AB09> { [          v,  V               ]       };
-    key <AB10> { [  semicolon,  colon, dead_acute, dead_diaeresis       ] };
+    key <AB10> { [      minus,  colon           ]       };
 
     key <BKSL> { [  backslash,  numbersign             ]       };
 };
