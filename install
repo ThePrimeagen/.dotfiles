@@ -13,6 +13,3 @@ do
 done
 popd
 
-pushd ./netflix
-popd
-
