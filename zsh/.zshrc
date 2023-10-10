@@ -153,11 +153,7 @@ bindkey "jj" self-insert-command
 bindkey -s "jk" "^["
 
 # add russian language
-# setxkbmap -layout us,ru -option grp:lwin_toggle
 dvorak
-
-
-# alias for openwrt docker
 
 # minicom
 MINICOM='-con' # colors on
@@ -178,7 +174,9 @@ export PATH="$PATH:/home/roach/.luarocks/bin"
 alias openwrt="docker run -v ~/work/docker_openwrt/:/root -it wimark-docker-firmware-builder"
 alias asdf='setxkbmap -layout "real-prog-dvorak,ru" -option grp:lwin_toggle'
 
-
 alias mosq="CPE_ID="5037737c-1eec-0c83-c697-44d1faac9f4e";  mosquitto_pub -d -t "REQ/CONFIG//CPE/5037737c-1eec-0c83-c697-44d1faac9f4e/fecdb011-32fb-4aa3-857d-19e7cff0ea92/JSONRPC/" -h stage.wimark.com -f /home/roach/work/tasks/DE-344/json/playload.json"
 alias mosq2="CPE_ID="5037737c-1eec-0c83-c697-44d1faac9f4e"; mosquitto_pub -d -t "REQ/CONFIG//CPE/5037737c-1eec-0c83-c697-44d1faac9f4e/fecdb011-32fb-4aa3-857d-19e7cff0ea92/JSONRPC/" -h nmstest.wimark.com -f /home/roach/work/tasks/DE-344/json/playload.json"
 
+alias vim="nvim"
+
+tmux a

@@ -40,7 +40,7 @@ xkb_symbols "real-prog-dvorak" {
     key <AC08> { [          t,  T               ]       };
     key <AC09> { [          n,  N               ]       };
     key <AC10> { [          s,  S               ]       };
-    key <AC11> { [  semicolon,  underscore, dead_acute, dead_diaeresis       ] };
+    key <AC11> { [      minus,  underscore      ]       };
 
     key <AB01> { [          z,  Z               ]       };
     key <AB02> { [          q,  Q               ]       };
@@ -51,7 +51,7 @@ xkb_symbols "real-prog-dvorak" {
     key <AB07> { [          m,  M               ]       };
     key <AB08> { [          w,  W               ]       };
     key <AB09> { [          v,  V               ]       };
-    key <AB10> { [      minus,  colon           ]       };
+    key <AB10> { [  semicolon,  colon, dead_acute, dead_diaeresis       ] };
 
     key <BKSL> { [  backslash,  numbersign             ]       };
 };

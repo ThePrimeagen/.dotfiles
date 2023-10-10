@@ -1,0 +1,3 @@
+
+cp xkb/.config/xkb/symbols/real-prog-dvorak /usr/share/X11/xkb/symbols/real-prog-dvorak
+
