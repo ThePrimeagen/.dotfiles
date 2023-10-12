@@ -3,4 +3,4 @@
 	url = git@github.com:Azganoth/tree-sitter-lua.git
 [submodule "nvim/.config/nvim"]
 	path = nvim/.config/nvim
-	url = git@github.com:ThePrimeagen/init.lua.git
+	url = git@github.com/roachme/nvim
