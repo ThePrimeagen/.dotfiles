@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
+select-project() {
+    find ~/work ~/projects ~/personal -mindepth 2 -maxdepth 3 -iname '.git' -type d \
+        | sed -e 's/\/.git$//' \
+        | fzf
+}
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/work/builds ~/projects ~/ ~/work ~/personal ~/personal/yt -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(select-project)
 fi
 
 if [[ -z $selected ]]; then
